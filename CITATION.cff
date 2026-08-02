@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite both this software and the primary dataset (DOI 10.25678/000D3C)."
+title: "Edge-enabled UV-Vis-Raman wastewater monitoring: pipeline and secondary-data validation"
+authors:
+  - family-names: Kumar
+    given-names: Prince
+  - family-names: Kaur
+    given-names: Harshpreet
+repository-code: "https://github.com/855princekumar/edge-uvvis-wastewater-monitoring"
+version: 1.0.0
+date-released: 2026-07-01
+license: MIT
+references:
+  - type: data
+    title: "Dataset on wastewater quality monitoring with adsorption and reflectance spectroscopy in the UV/Vis range"
+    authors:
+      - family-names: Lechevallier
+        given-names: Pierre
+      - family-names: Gruber
+        given-names: Guenter
+      - family-names: Bares
+        given-names: Vojtech
+      - family-names: Neuenhofer
+        given-names: Nicolas
+      - family-names: Waldner
+        given-names: Laura
+      - family-names: Mahajan
+        given-names: Aju
+      - family-names: Mutzner
+        given-names: Lena
+      - family-names: Rieckermann
+        given-names: Joerg
+    doi: 10.25678/000D3C
+    year: 2024
+    notes: "Licensed CC-BY 4.0. Primary source of all data analysed."

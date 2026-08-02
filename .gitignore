@@ -1,0 +1,23 @@
+# Never commit the licensed dataset or anything derived that reproduces it
+2_data.zip
+data/2_data*/
+data/raw/
+*.zip
+!assets/*.zip
+
+# Never commit the manuscript / publisher files (closed-access; copyright held by publisher)
+*.docx
+*.pdf
+manuscript*
+Title*Page*
+Cover*letter*
+Highlights*
+Declaration*
+
+# Python env / caches
+.venv/
+__pycache__/
+*.pyc
+
+# Synthetic outputs must never be published
+**/*SYNTHETIC*

@@ -1,0 +1,11 @@
+# Core (installed automatically by run_experiment.py into .venv)
+numpy
+pandas
+scipy
+scikit-learn
+matplotlib
+openpyxl
+requests
+# Proposed 1D-CNN model (CPU build recommended):
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+torch
