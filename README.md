@@ -86,8 +86,7 @@ is in [`results/batches_summary.csv`](results/batches_summary.csv). On this data
 lightweight PLS baseline matched or exceeded the 1D-CNN on every target, in both
 configurations; DOC could not be reliably recovered from UV-Vis alone.
 
-**Interactive dashboard:** <!-- ADD HOSTED DASHBOARD LINK HERE -->
-_(hosted link to be added)_
+**Interactive final results dashboard:**  [LINK](https://edge-uv-vis.855princekumar.workers.dev/) 
 
 The self-contained dashboard files are also included in the repository
 ([`results/batch-1_raw/dashboard.html`](results/batch-1_raw/dashboard.html),
