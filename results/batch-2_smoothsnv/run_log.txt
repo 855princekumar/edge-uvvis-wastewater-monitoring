@@ -1,0 +1,30 @@
+15:14:12 INFO    Batch output dir: C:\Users\Digitalpaani\Downloads\research-paper\paper-with-harsh\Spectrophotometer\rivision-20-07-26\ml-experiment-batch\results\batch-2_smoothsnv
+15:14:14 INFO    ============================================================
+15:14:14 INFO    Acquiring data
+15:14:14 INFO    Data zip already extracted: 2_data.zip
+15:14:14 INFO    Found b3f1363a-aec3-4bde-accd-0dc63c67fc3c-1_codes.zip (author code/demo) - reference only, not used for analysis.
+15:14:14 INFO    Eawag mode: labels=laboratory_measurements.csv  spectra=flume_scan_absorbance.csv
+15:14:14 INFO    Reading 216 absorbance columns from spectra (may take a moment)
+15:14:16 INFO    Kept 118892/118892 valid spectra rows.
+15:14:17 INFO    lab_nh4_mg_l: 510 grab samples matched to spectra
+15:14:17 INFO    lab_po4_mg_l: 510 grab samples matched to spectra
+15:14:17 INFO    lab_doc_mg_l: 510 grab samples matched to spectra
+15:14:17 INFO    Total runs to benchmark: 3
+15:14:17 INFO    ============================================================
+15:14:17 INFO    BENCHMARK: flume_scan_absorbance/lab_nh4_mg_l
+15:14:23 INFO      running 5-fold CV...
+15:14:43 INFO      PLS CV: R2=0.845+/-0.039  RMSE=3.989+/-0.573
+15:14:43 INFO      CNN1D CV: R2=0.729+/-0.020  RMSE=5.316+/-0.337
+15:14:43 INFO    ============================================================
+15:14:43 INFO    BENCHMARK: flume_scan_absorbance/lab_po4_mg_l
+15:14:47 INFO      running 5-fold CV...
+15:15:08 INFO      PLS CV: R2=0.663+/-0.055  RMSE=0.562+/-0.041
+15:15:08 INFO      CNN1D CV: R2=0.494+/-0.048  RMSE=0.690+/-0.031
+15:15:08 INFO    ============================================================
+15:15:08 INFO    BENCHMARK: flume_scan_absorbance/lab_doc_mg_l
+15:15:11 INFO      running 5-fold CV...
+15:15:33 INFO      PLS CV: R2=0.243+/-0.426  RMSE=41.800+/-5.618
+15:15:33 INFO      CNN1D CV: R2=0.237+/-0.087  RMSE=44.582+/-6.525
+15:15:33 INFO    ============================================================
+15:15:33 INFO    DONE. Batch outputs in C:\Users\Digitalpaani\Downloads\research-paper\paper-with-harsh\Spectrophotometer\rivision-20-07-26\ml-experiment-batch\results\batch-2_smoothsnv
+15:15:33 INFO    Cross-batch summary updated: C:\Users\Digitalpaani\Downloads\research-paper\paper-with-harsh\Spectrophotometer\rivision-20-07-26\ml-experiment-batch\results\batches_summary.csv
