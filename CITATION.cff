@@ -1,15 +1,27 @@
 cff-version: 1.2.0
 message: "If you use this repository, please cite both this software and the primary dataset (DOI 10.25678/000D3C)."
 title: "Edge-enabled UV-Vis-Raman wastewater monitoring: pipeline and secondary-data validation"
+type: software
 authors:
   - family-names: Kumar
     given-names: Prince
+    orcid: "https://orcid.org/0009-0001-8400-7853"
   - family-names: Kaur
     given-names: Harshpreet
+    orcid: "https://orcid.org/0009-0001-7546-2926"
 repository-code: "https://github.com/855princekumar/edge-uvvis-wastewater-monitoring"
-version: 1.0.0
-date-released: 2026-07-01
+url: "https://github.com/855princekumar/edge-uvvis-wastewater-monitoring"
+version: v1.0.1
+doi: 10.5281/zenodo.21904542
+date-released: 2026-08-12
 license: MIT
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.21904542
+    description: "Version v1.0.1 (this release)"
+  - type: doi
+    value: 10.5281/zenodo.21904541
+    description: "Concept DOI (all versions, resolves to latest)"
 references:
   - type: data
     title: "Dataset on wastewater quality monitoring with adsorption and reflectance spectroscopy in the UV/Vis range"
