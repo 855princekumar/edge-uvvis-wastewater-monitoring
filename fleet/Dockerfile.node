@@ -1,0 +1,9 @@
+# Edge node image. Debian packages exist for amd64, arm64 and armhf (32-bit), so the
+# same image builds for all three without compiling scientific wheels under QEMU.
+FROM debian:bookworm-slim
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      python3 python3-numpy python3-scipy python3-sklearn python3-paho-mqtt procps \
+    && rm -rf /var/lib/apt/lists/*
+WORKDIR /app
+COPY edge_node.py bench_edge.py /app/
+CMD ["python3", "-u", "edge_node.py"]

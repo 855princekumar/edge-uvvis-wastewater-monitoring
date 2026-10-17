@@ -1,0 +1,87 @@
+services:
+  broker:
+    image: eclipse-mosquitto:2
+    volumes: [./mosquitto.conf:/mosquitto/config/mosquitto.conf:ro]
+  collector:
+    build: {context: ., dockerfile: Dockerfile.node}
+    platform: linux/amd64
+    command: python3 -u collector.py
+    volumes: [./collector.py:/app/collector.py:ro, ./out:/out]
+    depends_on: [broker]
+  node_ref_amd64:
+    build: {context: ., dockerfile: Dockerfile.node}
+    image: edgefleet-node:linux-amd64
+    platform: linux/amd64
+    mem_limit: 4g
+    memswap_limit: 4g
+    cpus: 4
+    environment: ['NODE_ID=node_ref_amd64', 'BROKER=broker', 'MODEL=/models/pls_nh4.json', 'RUN_CNN=1', 'STRESS_THREADS=0']
+    volumes: [./models:/models:ro]
+    depends_on: [broker]
+  node_pi4_64_4g:
+    build: {context: ., dockerfile: Dockerfile.node}
+    image: edgefleet-node:linux-arm64
+    platform: linux/arm64
+    mem_limit: 4g
+    memswap_limit: 4g
+    cpus: 4
+    environment: ['NODE_ID=node_pi4_64_4g', 'BROKER=broker', 'MODEL=/models/pls_nh4.json', 'RUN_CNN=1', 'STRESS_THREADS=0']
+    volumes: [./models:/models:ro]
+    depends_on: [broker]
+  node_pi4_64_1g_1c:
+    build: {context: ., dockerfile: Dockerfile.node}
+    image: edgefleet-node:linux-arm64
+    platform: linux/arm64
+    mem_limit: 1g
+    memswap_limit: 1g
+    cpus: 1
+    environment: ['NODE_ID=node_pi4_64_1g_1c', 'BROKER=broker', 'MODEL=/models/pls_nh4.json', 'RUN_CNN=1', 'STRESS_THREADS=0']
+    volumes: [./models:/models:ro]
+    depends_on: [broker]
+  node_pi3_32_1g:
+    build: {context: ., dockerfile: Dockerfile.node}
+    image: edgefleet-node:linux-arm-v7
+    platform: linux/arm/v7
+    mem_limit: 1g
+    memswap_limit: 1g
+    cpus: 4
+    environment: ['NODE_ID=node_pi3_32_1g', 'BROKER=broker', 'MODEL=/models/pls_nh4.json', 'RUN_CNN=1', 'STRESS_THREADS=0']
+    volumes: [./models:/models:ro]
+    depends_on: [broker]
+  node_zero2_32_512m:
+    build: {context: ., dockerfile: Dockerfile.node}
+    image: edgefleet-node:linux-arm-v7
+    platform: linux/arm/v7
+    mem_limit: 512m
+    memswap_limit: 512m
+    cpus: 1
+    environment: ['NODE_ID=node_zero2_32_512m', 'BROKER=broker', 'MODEL=/models/pls_nh4.json', 'RUN_CNN=1', 'STRESS_THREADS=0']
+    volumes: [./models:/models:ro]
+    depends_on: [broker]
+  node_x_32_256m_half:
+    build: {context: ., dockerfile: Dockerfile.node}
+    image: edgefleet-node:linux-arm-v7
+    platform: linux/arm/v7
+    mem_limit: 256m
+    memswap_limit: 256m
+    cpus: 0.5
+    environment: ['NODE_ID=node_x_32_256m_half', 'BROKER=broker', 'MODEL=/models/pls_nh4.json', 'RUN_CNN=0', 'STRESS_THREADS=0']
+    volumes: [./models:/models:ro]
+    depends_on: [broker]
+  node_x_64_512m_load:
+    build: {context: ., dockerfile: Dockerfile.node}
+    image: edgefleet-node:linux-arm64
+    platform: linux/arm64
+    mem_limit: 512m
+    memswap_limit: 512m
+    cpus: 1
+    environment: ['NODE_ID=node_x_64_512m_load', 'BROKER=broker', 'MODEL=/models/pls_nh4.json', 'RUN_CNN=0', 'STRESS_THREADS=1']
+    volumes: [./models:/models:ro]
+    depends_on: [broker]
+  replayer:
+    build: {context: ., dockerfile: Dockerfile.node}
+    platform: linux/amd64
+    command: python3 -u replayer.py
+    environment: ['BROKER=broker', 'NODES=node_ref_amd64,node_pi4_64_4g,node_pi4_64_1g_1c,node_pi3_32_1g,node_zero2_32_512m,node_x_32_256m_half,node_x_64_512m_load', 'RATE_HZ=1', 'DURATION_S=1800', 'WARMUP_S=90']
+    volumes: [./replayer.py:/app/replayer.py:ro, ./models:/models:ro, ./out:/out]
+    depends_on: [broker, collector, node_ref_amd64, node_pi4_64_4g, node_pi4_64_1g_1c, node_pi3_32_1g, node_zero2_32_512m, node_x_32_256m_half, node_x_64_512m_load]

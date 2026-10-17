@@ -1,0 +1,30 @@
+broker-1  | 1792175743: Info: running mosquitto as user: mosquitto.
+broker-1  | 1792175743: mosquitto version 2.1.2 starting
+broker-1  | 1792175743: Config loaded from /mosquitto/config/mosquitto.conf.
+broker-1  | 1792175743: Bridge support available.
+broker-1  | 1792175743: Persistence support available.
+broker-1  | 1792175743: TLS support available.
+broker-1  | 1792175743: TLS-PSK support available.
+broker-1  | 1792175743: Websockets support available.
+broker-1  | 1792175743: Opening ipv4 listen socket on port 1883.
+broker-1  | 1792175743: Opening ipv6 listen socket on port 1883.
+broker-1  | 1792175743: mosquitto version 2.1.2 running
+broker-1  | 1792175744: New connection from 172.18.0.7:39415 on port 1883.
+broker-1  | 1792175744: New client connected from 172.18.0.7:39415 as collector (p4, c1, k60).
+broker-1  | 1792175745: New connection from 172.18.0.11:45631 on port 1883.
+broker-1  | 1792175745: New client connected from 172.18.0.11:45631 as replayer (p4, c1, k60).
+broker-1  | 1792175745: New connection from 172.18.0.3:60329 on port 1883.
+broker-1  | 1792175745: New client connected from 172.18.0.3:60329 as node_ref_amd64 (p4, c1, k60).
+broker-1  | 1792175757: New connection from 172.18.0.5:36133 on port 1883.
+broker-1  | 1792175757: New client connected from 172.18.0.5:36133 as node_zero2_32_512m (p4, c1, k60).
+broker-1  | 1792175757: New connection from 172.18.0.6:42069 on port 1883.
+broker-1  | 1792175757: New client connected from 172.18.0.6:42069 as node_pi3_32_1g (p4, c1, k60).
+broker-1  | 1792175770: New connection from 172.18.0.4:33169 on port 1883.
+broker-1  | 1792175770: New client connected from 172.18.0.4:33169 as node_x_32_256m_half (p4, c1, k60).
+broker-1  | 1792175770: New connection from 172.18.0.9:48525 on port 1883.
+broker-1  | 1792175770: New client connected from 172.18.0.9:48525 as node_pi4_64_4g (p4, c1, k60).
+broker-1  | 1792175807: New connection from 172.18.0.8:43965 on port 1883.
+broker-1  | 1792175807: New client connected from 172.18.0.8:43965 as node_pi4_64_1g_1c (p4, c1, k60).
+broker-1  | 1792175822: New connection from 172.18.0.10:44287 on port 1883.
+broker-1  | 1792175822: New client connected from 172.18.0.10:44287 as node_x_64_512m_load (p4, c1, k60).
+broker-1  | 1792177665: Client replayer [172.18.0.11:45631] disconnected: connection closed by client.

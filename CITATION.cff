@@ -11,14 +11,14 @@ authors:
     orcid: "https://orcid.org/0009-0001-7546-2926"
 repository-code: "https://github.com/855princekumar/edge-uvvis-wastewater-monitoring"
 url: "https://github.com/855princekumar/edge-uvvis-wastewater-monitoring"
-version: v1.0.1
-doi: 10.5281/zenodo.21904542
-date-released: 2026-08-12
+version: v1.1.0
+doi: 10.5281/zenodo.21904541
+date-released: 2026-10-17
 license: MIT
 identifiers:
   - type: doi
     value: 10.5281/zenodo.21904542
-    description: "Version v1.0.1 (this release)"
+    description: "Version v1.0.1 (previous release)"
   - type: doi
     value: 10.5281/zenodo.21904541
     description: "Concept DOI (all versions, resolves to latest)"

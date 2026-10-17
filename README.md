@@ -93,6 +93,109 @@ The self-contained dashboard files are also included in the repository
 [`results/batch-2_smoothsnv/dashboard.html`](results/batch-2_smoothsnv/dashboard.html)) and
 can be opened locally in any browser.
 
+## v1.1.0 additions
+
+### Study design: evidence first, hardware next
+
+Every result in v1.1.0 carries its evidential status, so this repository can serve as the test
+bed for the hardware and pilot stages that follow:
+
+| Tier | What it is | What it tests | What it does not test |
+|---|---|---|---|
+| 1. Real data | Eawag raw-wastewater UV-Vis spectra + lab references, random and time-blocked CV | model accuracy on a real matrix; optimism of random CV | a built device; Indian STP influent/effluent |
+| 2. Real hardware | `bench_edge.py` and `edge_node.py` on a physical Raspberry Pi 4 (4 GB) over a VPN | compute cost and end-to-end path on the target board | sensing, fouling, power |
+| 3. Emulation | Pi-class Docker/QEMU profiles and an MQTT fleet replaying the real spectra | memory/CPU budgets and boards not available; loss; cross-architecture agreement | hardware timings (emulation overstated Pi 4 latency 9-31x) |
+| 4. Simulation | `simulation/` physics-informed UV-Vis + Raman study | Raman hardware requirements under stated assumptions | validation of Raman fusion |
+
+### Computational setup
+
+| Machine | Hardware | Software |
+|---|---|---|
+| Workstation (x86-64) | 11th-gen Intel Core i7 laptop CPU (4 cores / 8 threads, 3.0 GHz base), 16 GB RAM, 512 GB NVMe SSD | Windows 11 Pro 64-bit; Tier 1 analysis in Python 3.14.6 (scikit-learn 1.9.0, NumPy 2.5.1, PyTorch 2.13.0 CPU); Docker Engine 29.5.3 in WSL2 (kernel 6.18, 8 vCPUs, 7.5 GiB), Debian 12 images for amd64/arm64/armv7, QEMU user-mode emulation, Mosquitto 2.1.2 |
+| Edge node (physical) | Raspberry Pi 4 Model B rev 1.5, BCM2711 4x Cortex-A72 @ 1.8 GHz, 4 GB LPDDR4, 128 GB microSD | Raspberry Pi OS 64-bit (Debian 12, kernel 6.6.31), Python 3.11.2, NumPy 1.24.2, SciPy 1.10.1, scikit-learn 1.2.1, paho-mqtt 1.6.1; reached over an encrypted VPN (SSH for benchmarks, MQTT for the fleet test) |
+
+### Time-blocked validation (leave-one-period-out)
+
+Random folds can put temporally adjacent grab samples into both training and validation.
+`--cv blocked` holds out five contiguous periods (about five weeks each, 102 samples), with the
+inner PLS latent-variable selection also blocked.
+
+```bash
+# regression check: reproduces results/batch-2_smoothsnv exactly
+python run_experiment.py --targets "nh4,po4,doc" --kfold 5 --smooth --snv --tag repro_smoothsnv
+python run_experiment.py --targets "nh4,po4,doc" --kfold 5 --smooth --snv --cv blocked --tag smoothsnv_blocked
+python run_experiment.py --targets "nh4,po4,doc" --kfold 5 --cv blocked --tag raw_blocked
+python block_spans.py      # date range of each blocked fold
+```
+
+CV R² (mean +/- sd), smoothed + SNV (`results/batch-4_smoothsnv_blocked/`):
+
+| Target | PLS random | PLS blocked | 1D-CNN random | 1D-CNN blocked |
+|---|---|---|---|---|
+| Ammonium | 0.845 +/- 0.039 | 0.816 +/- 0.071 | 0.729 +/- 0.020 | 0.594 +/- 0.190 |
+| Phosphate | 0.663 +/- 0.055 | 0.536 +/- 0.092 | 0.494 +/- 0.048 | 0.281 +/- 0.197 |
+| DOC | 0.243 +/- 0.426 | -0.648 +/- 1.251 | 0.237 +/- 0.087 | -0.351 +/- 0.562 |
+
+Holding out whole periods costs PLS little for ammonium but costs the CNN more, and DOC does
+not generalise to unseen periods at all. Raw-spectra blocked results: `results/batch-5_raw_blocked/`.
+
+### Edge inference benchmark and emulated Pi-class fleet (EMULATED, not Raspberry Pi hardware)
+
+`bench_edge.py` times the actual models (PLS, 12 latent variables; the paper's 1D-CNN in
+PyTorch if installed, and as a pure-NumPy forward pass that also runs on 32-bit ARM).
+`fleet/` runs it in Docker containers for linux/arm64 and linux/arm/v7 under **QEMU
+user-mode emulation** with Docker cgroup memory/CPU limits. The limits are real; the CPU
+speed is the emulator's, not a Pi's, and is not proportional to it. The physical-Pi numbers
+below were measured with
+`python3 bench_edge.py --repeats 2000 --sustain 30 --label pi4-real --out bench_pi_real.json`.
+
+```bash
+python fleet/export_model.py --data-root data/raw/extracted   # PLS coefficients + real replay spectra
+cd fleet
+./run_bench_matrix_win.sh          # or run_bench_matrix.sh on Linux/macOS -> out/bench_*.json
+COMPOSE_BUILD=--build ./run_fleet.sh 1 1800 my_run   # first run builds images; 7 nodes, MQTT,
+                                                      # real spectra at 1 Hz for 30 min -> runs/my_run/
+python plot_fleet.py runs/my_run figs
+```
+
+| Measurement | PLS (12 LV) | 1D-CNN (NumPy) | Source |
+|---|---|---|---|
+| **Physical Raspberry Pi 4, 4 GB**, median / p95 (ms) | 0.187 / 0.198 | 2.76 / 2.89 | `fleet/real_pi/` |
+| Emulated arm64 4 GB profile, median (ms) | 1.70 | 85.7 | `fleet/out_bench/` |
+| Native x86-64 container, median (ms) | 0.07 | 0.62 | `fleet/out_bench/` |
+
+All seven emulated profiles, down to 256 MB and half a core, completed without OOM. PyTorch
+is not available on 32-bit ARM; the NumPy CNN covers it.
+
+Fleet test (real spectra, MQTT QoS 1, 1 Hz per node = 120x the real 2-min rate):
+- run A, 7 emulated nodes, 30 min: 0% loss on every node; median end-to-end latency 6.7 to
+  448 ms; node predictions equal host predictions to within 6e-13 mg/L on x86-64, arm64 and
+  armv7 (`fleet/runs/fleet_1hz_1800s/`);
+- run B, the same plus the physical Pi 4 over a VPN, 10 min: 0% loss; Pi median end-to-end
+  latency 192 ms (two VPN transits included), whole-board CPU about 4% of one core
+  (`fleet/runs/fleet_with_real_pi_1hz_600s/`; `run_fleet_with_real_pi.sh`).
+
+- run C, broker restarted at about 300 s of a 10-min run: **47% loss on every node**. The node
+  client (`edge_node.py`) reconnects but does not renew its subscription, so nodes go silent
+  after a broker restart. Recorded as a result; renewing subscriptions in `on_connect` and
+  persistent sessions are required before the Stage 2 soak test
+  (`fleet/runs/x_broker_restart_600s/`).
+
+- run D, burst at 10 Hz per node (1,200x) for 5 min: five nodes returned every result; the two
+  one-core arm64 profiles fell behind under emulation (66.6% and 49.7% not returned when the run
+  closed) (`fleet/runs/x_burst_10hz_300s/`).
+- memory floor 128 MB (`fleet/out_bench_x/`): armv7 ran (peak RSS at the limit); arm64 was
+  OOM-killed (exit 137).
+
+A 30-min run is not the 72 h soak test of Stage 2, so Stage 2 is only partially evaluated.
+
+### In-silico UV-Vis + Raman design study (SIMULATION, not a validation)
+
+`simulation/sim_fusion.py` and `simulation/analyse.py` generate synthetic nitrifying-effluent
+UV-Vis and Raman spectra under stated assumptions and estimate when Raman would reduce
+prediction error. Outputs: `simulation/sim_*.csv`, `simulation/fig_*.png`. These results are
+conditional on the assumptions and are used only to set hardware requirements.
+
 ## How to cite
 
 Please cite **both** the primary dataset (DOI 10.25678/000D3C) and this repository; see

@@ -21,3 +21,7 @@ __pycache__/
 
 # Synthetic outputs must never be published
 **/*SYNTHETIC*
+
+# v1.1.0 additions
+fleet/out/
+fleet/models/*.npy

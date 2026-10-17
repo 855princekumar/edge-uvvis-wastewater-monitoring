@@ -1,0 +1,45 @@
+{
+  "device": {
+    "machine": "x86_64",
+    "python": "3.11.2",
+    "system": "Linux-6.18.33.1-microsoft-standard-WSL2-x86_64-with-glibc2.36",
+    "model": "unknown",
+    "cpu_count": 8
+  },
+  "label": "node_ref_amd64-emulated",
+  "input_channels": 216,
+  "baseline_rss_mb": 33.75390625,
+  "numpy": "1.24.2",
+  "cgroup_memory_max": "4294967296",
+  "cgroup_cpu_max": "400000 100000",
+  "PLS": {
+    "median_ms": 0.06726649007759988,
+    "p95_ms": 0.09818404214456677,
+    "mean_ms": 0.17531804839381948,
+    "n_parameters": 649,
+    "serialized_kb": 143.66796875,
+    "flops_per_spectrum": 864,
+    "sustained": {
+      "inferences": 375510,
+      "per_s": 18775.175660742203,
+      "cpu_util_pct_one_core": 102.49822935347
+    }
+  },
+  "CNN1D_torch": {
+    "skipped": "torch not installed (pip install torch)"
+  },
+  "CNN1D_numpy": {
+    "median_ms": 0.6201975047588348,
+    "p95_ms": 1.4710129471495748,
+    "mean_ms": 0.7469377672532573,
+    "n_parameters": 11137,
+    "serialized_kb": 44.1328125,
+    "note": "pure NumPy forward pass, architecture of Table 5, float32",
+    "sustained": {
+      "inferences": 29886,
+      "per_s": 1494.2973809455648,
+      "cpu_util_pct_one_core": 99.94982481798111
+    }
+  },
+  "peak_rss_mb": 83.86328125
+}

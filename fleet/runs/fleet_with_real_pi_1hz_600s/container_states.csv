@@ -1,0 +1,10 @@
+fleet-broker-1,running,0
+fleet-collector-1,running,0
+fleet-node_pi3_32_1g-1,running,0
+fleet-node_pi4_64_1g_1c-1,running,0
+fleet-node_pi4_64_4g-1,running,0
+fleet-node_ref_amd64-1,running,0
+fleet-node_x_32_256m_half-1,running,0
+fleet-node_x_64_512m_load-1,running,0
+fleet-node_zero2_32_512m-1,running,0
+fleet-replayer-1,exited,0

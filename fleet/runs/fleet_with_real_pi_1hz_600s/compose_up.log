@@ -1,0 +1,253 @@
+ Image edgefleet-node:linux-arm-v7 Building 
+ Image fleet-replayer Building 
+ Image edgefleet-node:linux-arm64 Building 
+ Image edgefleet-node:linux-arm-v7 Building 
+ Image edgefleet-node:linux-arm-v7 Building 
+ Image edgefleet-node:linux-arm64 Building 
+ Image edgefleet-node:linux-arm64 Building 
+ Image fleet-collector Building 
+ Image edgefleet-node:linux-amd64 Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 4.60kB done
+#1 DONE 0.0s
+
+#2 [node_ref_amd64 internal] load build definition from Dockerfile.node
+#2 transferring dockerfile: 513B 0.0s done
+#2 DONE 0.1s
+
+#3 [node_zero2_32_512m internal] load metadata for docker.io/library/debian:bookworm-slim
+#3 ...
+
+#4 [collector internal] load metadata for docker.io/library/debian:bookworm-slim
+#4 DONE 1.7s
+
+#5 [node_x_64_512m_load internal] load metadata for docker.io/library/debian:bookworm-slim
+#5 DONE 1.7s
+
+#6 [node_ref_amd64 internal] load .dockerignore
+#6 transferring context: 2B done
+#6 DONE 0.0s
+
+#7 [replayer internal] load build context
+#7 transferring context: 67B done
+#7 DONE 0.0s
+
+#8 [node_ref_amd64 1/4] FROM docker.io/library/debian:bookworm-slim@sha256:7c7b2c966bc9ee8cedfeef67e0e279108992c77681fa595db4a9d65c06ccc587
+#8 resolve docker.io/library/debian:bookworm-slim@sha256:7c7b2c966bc9ee8cedfeef67e0e279108992c77681fa595db4a9d65c06ccc587 0.0s done
+#8 DONE 0.0s
+
+#9 [node_pi4_64_1g_1c 1/4] FROM docker.io/library/debian:bookworm-slim@sha256:7c7b2c966bc9ee8cedfeef67e0e279108992c77681fa595db4a9d65c06ccc587
+#9 resolve docker.io/library/debian:bookworm-slim@sha256:7c7b2c966bc9ee8cedfeef67e0e279108992c77681fa595db4a9d65c06ccc587 0.0s done
+#9 DONE 0.0s
+
+#10 [node_ref_amd64 2/4] RUN apt-get update && apt-get install -y --no-install-recommends       python3 python3-numpy python3-scipy python3-sklearn python3-paho-mqtt procps     && rm -rf /var/lib/apt/lists/*
+#10 CACHED
+
+#11 [node_ref_amd64 3/4] WORKDIR /app
+#11 CACHED
+
+#12 [node_pi4_64_1g_1c 2/4] RUN apt-get update && apt-get install -y --no-install-recommends       python3 python3-numpy python3-scipy python3-sklearn python3-paho-mqtt procps     && rm -rf /var/lib/apt/lists/*
+#12 CACHED
+
+#13 [node_pi4_64_1g_1c 3/4] WORKDIR /app
+#13 CACHED
+
+#14 [replayer 4/4] COPY edge_node.py bench_edge.py /app/
+#14 CACHED
+
+#15 [node_pi4_64_1g_1c 4/4] COPY edge_node.py bench_edge.py /app/
+#15 CACHED
+
+#16 [collector] exporting to image
+#16 exporting layers done
+#16 exporting manifest sha256:a3343085dcaa6305b01f7435a6433edc401e833d1c1a5ab6541f2774728bd6e1 done
+#16 exporting config sha256:31eebbd4fb6c5b6cbc3bf2f9800110f582861182b6c22996607fd02443306eb8 done
+#16 exporting attestation manifest sha256:e558e35d85ed4ebd057d1727b5ca9bea6707c06f27ea2f4648a425a90eb44eac 0.1s done
+#16 exporting manifest list sha256:f9b111f5dbd9c5a539209ef5cc5bfa7b58b4feebfc5c48637288ddb440ba7e1f
+#16 exporting manifest list sha256:f9b111f5dbd9c5a539209ef5cc5bfa7b58b4feebfc5c48637288ddb440ba7e1f 0.1s done
+#16 naming to docker.io/library/fleet-collector:latest 0.0s done
+#16 unpacking to docker.io/library/fleet-collector:latest
+#16 unpacking to docker.io/library/fleet-collector:latest 0.0s done
+#16 DONE 0.4s
+
+#6 [node_x_32_256m_half internal] load .dockerignore
+#6 transferring context: 2B done
+#6 DONE 0.0s
+
+#7 [node_pi3_32_1g internal] load build context
+#7 transferring context: 67B done
+#7 DONE 0.0s
+
+#17 [node_x_64_512m_load] exporting to image
+#17 exporting layers done
+#17 exporting manifest sha256:511a182a6829fd464d7a17b6089b44885f7310ac200aef8d948a5d013c5d4819 done
+#17 exporting config sha256:846792bece272ed6dfe67c8fcb3419f375c3bdbfaebe32a70c4f5f2c9fd94d0d done
+#17 exporting attestation manifest sha256:dede4bff72cc73a2367a4a46c3756ddb6a5d829ec6ab36f05b5c805eeb387b22 0.1s done
+#17 exporting manifest list sha256:e69b3a1b1ea6a46434fd8867429b61c171e4abdf87142bdf9d3a8c949176c18f 0.1s done
+#17 naming to docker.io/library/edgefleet-node:linux-arm64 0.0s done
+#17 DONE 0.3s
+
+#18 [node_pi4_64_1g_1c] exporting to image
+#18 exporting layers done
+#18 exporting manifest sha256:2a60b087258ae58fc7271c23b3cb6e7b96ac4232c2e44f0a93bfec9a84975142 0.0s done
+#18 exporting config sha256:68b22fef634801920853c871458f7d168070a239513f16bbdbcdd67c7a1f8149 0.0s done
+#18 exporting attestation manifest sha256:3111ac6078452f4b8036fce900abc5c5a1a8ed8ec950faaaf67ddbd85d73f056 0.1s done
+#18 exporting manifest list sha256:fbbcfbc2ffae2075cf72b9abeece91c4cc7efd671ba874cfc7177b1d5d95a9e5 0.0s done
+#18 naming to docker.io/library/edgefleet-node:linux-arm64 0.0s done
+#18 DONE 0.3s
+
+#3 [node_zero2_32_512m internal] load metadata for docker.io/library/debian:bookworm-slim
+#3 DONE 2.1s
+
+#19 [node_pi3_32_1g 1/4] FROM docker.io/library/debian:bookworm-slim@sha256:7c7b2c966bc9ee8cedfeef67e0e279108992c77681fa595db4a9d65c06ccc587
+#19 ...
+
+#20 [replayer] exporting to image
+#20 exporting layers done
+#20 exporting manifest sha256:aaa44fb582846b16551daea9c0230db311f761b9a2d9fead902f5341a10e18e7 done
+#20 exporting config sha256:ed47d30ed5dd7faf310cf99a282740c3065362454887669a3985a20fb6b53b73 done
+#20 exporting attestation manifest sha256:0684cd0aa8e8d99516133460ec6b84f222052474511018f4f94932db18e6c962 0.1s done
+#20 exporting manifest list sha256:6a8cc74aa1759a864f2f0bc66df2e73e83cc0f51eed115804514e4fa8d1cae24 0.1s done
+#20 naming to docker.io/library/fleet-replayer:latest 0.0s done
+#20 unpacking to docker.io/library/fleet-replayer:latest 0.0s done
+#20 DONE 0.4s
+
+#21 [node_ref_amd64] exporting to image
+#21 exporting layers done
+#21 exporting manifest sha256:265a5af30d76a7749072666b5ee6839f807726660cc5b06d36b62348a4f408b1 done
+#21 exporting config sha256:4dbb12f131a26a30aed985afae9baa6c3ceb2c28776dd4a3e6805dd64664da4f done
+#21 exporting attestation manifest sha256:7e4e2c4e3fb10c05c7ae2c58e8960845b57473bd78609bf7a012174bd1e17708 0.1s done
+#21 exporting manifest list sha256:eca518c5c4259d968d5f08eb0c0c07879e9d48506c5253eef0a0b3b361cd18f2 0.1s done
+#21 naming to docker.io/library/edgefleet-node:linux-amd64 0.0s done
+#21 unpacking to docker.io/library/edgefleet-node:linux-amd64 0.0s done
+#21 DONE 0.4s
+
+#22 [node_pi4_64_4g] exporting to image
+#22 exporting layers done
+#22 exporting manifest sha256:52457065ca74346d3f87354d107b6cf602ab83f74b18a4652df951c6389613a4 0.0s done
+#22 exporting config sha256:1571002521f028a0fc0bb2a20f411ee078fae39e59b6e5fbb6e3ae0423e6576d 0.0s done
+#22 exporting attestation manifest sha256:940f599d0114f55c8d262cdd46eb1139eedeed2dd3062a3783961c25d8c6edbe 0.1s done
+#22 exporting manifest list sha256:ec0e89cdf0b86fe6e36cf9822f41bb48ee72568234285813eccde9bfebddd456 0.0s done
+#22 naming to docker.io/library/edgefleet-node:linux-arm64 0.0s done
+#22 DONE 0.4s
+
+#19 [node_zero2_32_512m 1/4] FROM docker.io/library/debian:bookworm-slim@sha256:7c7b2c966bc9ee8cedfeef67e0e279108992c77681fa595db4a9d65c06ccc587
+#19 resolve docker.io/library/debian:bookworm-slim@sha256:7c7b2c966bc9ee8cedfeef67e0e279108992c77681fa595db4a9d65c06ccc587 0.3s done
+#19 resolve docker.io/library/debian:bookworm-slim@sha256:7c7b2c966bc9ee8cedfeef67e0e279108992c77681fa595db4a9d65c06ccc587 0.3s done
+#19 DONE 0.3s
+
+#23 [node_x_32_256m_half 3/4] WORKDIR /app
+#23 CACHED
+
+#24 [node_x_32_256m_half 2/4] RUN apt-get update && apt-get install -y --no-install-recommends       python3 python3-numpy python3-scipy python3-sklearn python3-paho-mqtt procps     && rm -rf /var/lib/apt/lists/*
+#24 CACHED
+
+#25 [node_x_32_256m_half 4/4] COPY edge_node.py bench_edge.py /app/
+#25 CACHED
+
+#26 [node_x_32_256m_half] exporting to image
+#26 exporting layers done
+#26 exporting manifest sha256:289c030ccd81f52f8cf71bda7185d54b2f73609516be8a73ad803346d57222fa done
+#26 exporting config sha256:e872dfe5b21b902de16d8036ef428fc5a751af2dd50cee3d55db539688af5080 done
+#26 exporting attestation manifest sha256:ba01a645e8e858bcfdecdc6906482da49c1e1e90c953f8822bbe1b8d3ffeb538
+#26 exporting attestation manifest sha256:ba01a645e8e858bcfdecdc6906482da49c1e1e90c953f8822bbe1b8d3ffeb538 0.1s done
+#26 exporting manifest list sha256:25e11884b2614a3b4d6861806d2f4690ce7b8cb429d16ee850276a476fcc05e9
+#26 exporting manifest list sha256:25e11884b2614a3b4d6861806d2f4690ce7b8cb429d16ee850276a476fcc05e9 0.1s done
+#26 naming to docker.io/library/edgefleet-node:linux-arm-v7 0.0s done
+#26 DONE 0.3s
+
+#27 [node_pi3_32_1g] exporting to image
+#27 exporting layers done
+#27 exporting manifest sha256:787e4e74e335f5164649c2b3798ad0ff451386138f9bb51c7bf4d0492d3db0fd 0.0s done
+#27 exporting config sha256:9444ecef7d02a4e866f21710c12f7cd479e51aca830f2515dadab951425bf935 0.0s done
+#27 exporting attestation manifest sha256:d24b92ed7f20b96d8e1ccc7e5c98adbc6190b20b6aa47b7406177fa5e5fa16a8 0.1s done
+#27 exporting manifest list sha256:c1d1d1f08bd0438c925ac90f9bc932f4a636eef32b4829d410a463094d508b9f 0.1s done
+#27 naming to docker.io/library/edgefleet-node:linux-arm-v7 0.0s done
+#27 DONE 0.3s
+
+#28 [node_zero2_32_512m] exporting to image
+#28 exporting layers done
+#28 exporting manifest sha256:96341557bbb2f23eddd7d07e9cecdfbf5887974112844705143d3ac42c5f4f8d 0.0s done
+#28 exporting config sha256:9576ca2e542f9bd3251ac67cffbaffab0e644173605b247d7b5c5d7f081e2df3 0.0s done
+#28 exporting attestation manifest sha256:3b4c80c3fd1a050b79917702559af7c12010c271c404cfbdebc1c61c02844b5b 0.1s done
+#28 exporting manifest list sha256:c27146c86781f3985115b737033f7e2a65d6fe1e4b47dd59ba19a225a0d552b3 0.0s done
+#28 naming to docker.io/library/edgefleet-node:linux-arm-v7 0.0s done
+#28 DONE 0.4s
+
+#29 [node_x_64_512m_load] resolving provenance for metadata file
+#29 DONE 0.3s
+
+#30 [replayer] resolving provenance for metadata file
+#30 DONE 0.3s
+
+#31 [collector] resolving provenance for metadata file
+#31 DONE 0.1s
+
+#32 [node_pi4_64_4g] resolving provenance for metadata file
+#32 DONE 0.1s
+
+#33 [node_pi3_32_1g] resolving provenance for metadata file
+#33 DONE 0.3s
+
+#34 [node_x_32_256m_half] resolving provenance for metadata file
+#34 DONE 0.2s
+
+#35 [node_ref_amd64] resolving provenance for metadata file
+#35 DONE 0.2s
+
+#36 [node_pi4_64_1g_1c] resolving provenance for metadata file
+#36 DONE 0.3s
+
+#37 [node_zero2_32_512m] resolving provenance for metadata file
+#37 DONE 0.0s
+ Image edgefleet-node:linux-arm64 Built 
+ Image edgefleet-node:linux-arm64 Built 
+ Image edgefleet-node:linux-arm-v7 Built 
+ Image edgefleet-node:linux-amd64 Built 
+ Image edgefleet-node:linux-arm-v7 Built 
+ Image edgefleet-node:linux-arm-v7 Built 
+ Image edgefleet-node:linux-arm64 Built 
+ Image fleet-collector Built 
+ Image fleet-replayer Built 
+ Network fleet_default Creating 
+ Network fleet_default Created 
+ Container fleet-broker-1 Creating 
+ Container fleet-broker-1 Created 
+ Container fleet-node_pi3_32_1g-1 Creating 
+ Container fleet-node_x_32_256m_half-1 Creating 
+ Container fleet-node_x_64_512m_load-1 Creating 
+ Container fleet-node_pi4_64_1g_1c-1 Creating 
+ Container fleet-node_ref_amd64-1 Creating 
+ Container fleet-collector-1 Creating 
+ Container fleet-node_zero2_32_512m-1 Creating 
+ Container fleet-node_pi4_64_4g-1 Creating 
+ Container fleet-collector-1 Created 
+ Container fleet-node_ref_amd64-1 Created 
+ Container fleet-node_zero2_32_512m-1 Created 
+ Container fleet-node_pi3_32_1g-1 Created 
+ Container fleet-node_x_32_256m_half-1 Created 
+ Container fleet-node_pi4_64_4g-1 Created 
+ Container fleet-node_pi4_64_1g_1c-1 Created 
+ Container fleet-node_x_64_512m_load-1 Created 
+ Container fleet-replayer-1 Creating 
+ Container fleet-replayer-1 Created 
+ Container fleet-broker-1 Starting 
+ Container fleet-broker-1 Started 
+ Container fleet-node_zero2_32_512m-1 Starting 
+ Container fleet-collector-1 Starting 
+ Container fleet-node_ref_amd64-1 Starting 
+ Container fleet-node_pi3_32_1g-1 Starting 
+ Container fleet-node_x_32_256m_half-1 Starting 
+ Container fleet-node_x_64_512m_load-1 Starting 
+ Container fleet-node_pi4_64_1g_1c-1 Starting 
+ Container fleet-node_pi4_64_4g-1 Starting 
+ Container fleet-node_ref_amd64-1 Started 
+ Container fleet-node_pi4_64_1g_1c-1 Started 
+ Container fleet-node_x_64_512m_load-1 Started 
+ Container fleet-node_x_32_256m_half-1 Started 
+ Container fleet-collector-1 Started 
+ Container fleet-node_pi4_64_4g-1 Started 
+ Container fleet-node_zero2_32_512m-1 Started 
+ Container fleet-node_pi3_32_1g-1 Started 
+ Container fleet-replayer-1 Starting 
+ Container fleet-replayer-1 Started 

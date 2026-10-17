@@ -1,0 +1,43 @@
+{
+  "device": {
+    "machine": "aarch64",
+    "python": "3.11.2",
+    "system": "Linux-6.6.31+rpt-rpi-v8-aarch64-with-glibc2.36",
+    "model": "Raspberry Pi 4 Model B Rev 1.5",
+    "cpu_count": 4
+  },
+  "label": "pi4-real-1thread",
+  "input_channels": 216,
+  "baseline_rss_mb": 30.56640625,
+  "numpy": "1.24.2",
+  "PLS": {
+    "median_ms": 0.18653389997780323,
+    "p95_ms": 0.19836798310279846,
+    "mean_ms": 0.18778475385624915,
+    "n_parameters": 649,
+    "serialized_kb": 143.66796875,
+    "flops_per_spectrum": 864,
+    "sustained": {
+      "inferences": 158090,
+      "per_s": 5269.663112633206,
+      "cpu_util_pct_one_core": 99.99993255676904
+    }
+  },
+  "CNN1D_torch": {
+    "skipped": "torch not installed (pip install torch)"
+  },
+  "CNN1D_numpy": {
+    "median_ms": 2.7597459265962243,
+    "p95_ms": 2.8929850086569786,
+    "mean_ms": 2.7802979352418333,
+    "n_parameters": 11137,
+    "serialized_kb": 44.1328125,
+    "note": "pure NumPy forward pass, architecture of Table 5, float32",
+    "sustained": {
+      "inferences": 10678,
+      "per_s": 355.91307364566,
+      "cpu_util_pct_one_core": 99.92764513857355
+    }
+  },
+  "peak_rss_mb": 86.046875
+}

@@ -285,8 +285,12 @@ def load_eawag(root: Path, args, logger):
         X = merged[abs_cols].to_numpy(float)
         y = merged[tcol].to_numpy(float)
         logger.info("%s: %d grab samples matched to spectra", tcol, len(merged))
+        t = merged["timestamp_iso"].to_numpy()
+        gaps_h = np.diff(t).astype("timedelta64[s]").astype(float) / 3600.0
+        logger.info("%s: span %s -> %s; median gap between grab samples %.2f h",
+                    tcol, str(t[0])[:16], str(t[-1])[:16], float(np.median(gaps_h)))
         runs.append({"label": f"{spec_path.stem}/{tcol}", "X": X, "y": y,
-                     "wl": wl, "target": tcol})
+                     "wl": wl, "target": tcol, "t": t})
     return runs or None
 
 
@@ -342,14 +346,15 @@ def metrics(y_true, y_pred):
 # ============================================================================
 # 4. MODELS
 # ============================================================================
-def fit_pls(Xtr, ytr, seed, max_nc=20):
+def fit_pls(Xtr, ytr, seed, max_nc=20, blocked=False):
     import numpy as np
     from sklearn.cross_decomposition import PLSRegression
     from sklearn.model_selection import KFold
     from sklearn.metrics import r2_score
     best_nc, best = 2, -1e18
     mx = min(max_nc, Xtr.shape[1], Xtr.shape[0] - 1)
-    kf = KFold(n_splits=min(5, len(ytr)), shuffle=True, random_state=seed)
+    kf = (KFold(n_splits=min(5, len(ytr)), shuffle=False) if blocked else
+          KFold(n_splits=min(5, len(ytr)), shuffle=True, random_state=seed))
     for nc in range(2, max(3, mx) + 1):
         sc = []
         for tr, va in kf.split(Xtr):
@@ -448,14 +453,20 @@ def benchmark(X, y, args, logger, model_kind):
 
     # ---- k-fold CV (mean +/- sd) ----
     if args.kfold and args.kfold >= 2:
-        logger.info("  running %d-fold CV...", args.kfold)
-        kf = KFold(n_splits=args.kfold, shuffle=True, random_state=args.seed)
+        blocked = getattr(args, "cv", "random") == "blocked"
+        logger.info("  running %d-fold CV (%s)...", args.kfold,
+                    "time-blocked, contiguous periods" if blocked else "random")
+        # data are time-sorted by the merge, so unshuffled KFold = contiguous
+        # periods (leave-one-period-out); inner PLS CV is blocked as well
+        kf = (KFold(n_splits=args.kfold, shuffle=False) if blocked else
+              KFold(n_splits=args.kfold, shuffle=True, random_state=args.seed))
+        fold_log = []
         agg = {"PLS": {"R2": [], "RMSE": [], "MAE": [], "RPD": []},
                key: {"R2": [], "RMSE": [], "MAE": [], "RPD": []}}
         for fold, (tr, va) in enumerate(kf.split(X)):
             sca = StandardScaler().fit(X[tr])
             Xtr_f, Xva_f = sca.transform(X[tr]), sca.transform(X[va])
-            p, _ = fit_pls(Xtr_f, y[tr], args.seed)
+            p, ncf = fit_pls(Xtr_f, y[tr], args.seed, blocked=blocked)
             mp = metrics(y[va], p.predict(Xva_f).ravel())
             for k in agg["PLS"]:
                 agg["PLS"][k].append(mp[k])
@@ -464,6 +475,8 @@ def benchmark(X, y, args, logger, model_kind):
             mn = metrics(y[va], pn)
             for k in agg[key]:
                 agg[key][k].append(mn[k])
+            logger.info("    fold %d: n_val=%d  PLS(nc=%d) R2=%.3f  %s R2=%.3f",
+                        fold + 1, len(va), ncf, mp["R2"], key, mn["R2"])
         for mdl in (["PLS", key]):
             cv = {}
             for k, vals in agg[mdl].items():
@@ -965,6 +978,9 @@ def build_parser():
     p.add_argument("--join-tol", default="5min", help="join tolerance (pandas)")
     p.add_argument("--model", choices=["cnn1d", "mlp"], default="cnn1d")
     p.add_argument("--kfold", type=int, default=0, help="k folds (>=2 to enable)")
+    p.add_argument("--cv", choices=["random", "blocked"], default="random",
+                   help="random = shuffled KFold (original); blocked = contiguous "
+                        "time periods (leave-one-period-out)")
     p.add_argument("--epochs", type=int, default=60)
     p.add_argument("--test-size", type=float, default=0.25)
     p.add_argument("--seed", type=int, default=42)

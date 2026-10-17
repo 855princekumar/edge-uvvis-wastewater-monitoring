@@ -1,0 +1,50 @@
+{
+ "node_ref_amd64": {
+  "node": "node_ref_amd64",
+  "arch": "x86_64",
+  "py": "3.11.2",
+  "numpy": "1.24.2"
+ },
+ "pi4_real_vpn": {
+  "node": "pi4_real_vpn",
+  "arch": "aarch64",
+  "py": "3.11.2",
+  "numpy": "1.24.2"
+ },
+ "node_zero2_32_512m": {
+  "node": "node_zero2_32_512m",
+  "arch": "armv7l",
+  "py": "3.11.2",
+  "numpy": "1.24.2"
+ },
+ "node_pi3_32_1g": {
+  "node": "node_pi3_32_1g",
+  "arch": "armv7l",
+  "py": "3.11.2",
+  "numpy": "1.24.2"
+ },
+ "node_x_32_256m_half": {
+  "node": "node_x_32_256m_half",
+  "arch": "armv7l",
+  "py": "3.11.2",
+  "numpy": "1.24.2"
+ },
+ "node_pi4_64_4g": {
+  "node": "node_pi4_64_4g",
+  "arch": "aarch64",
+  "py": "3.11.2",
+  "numpy": "1.24.2"
+ },
+ "node_pi4_64_1g_1c": {
+  "node": "node_pi4_64_1g_1c",
+  "arch": "aarch64",
+  "py": "3.11.2",
+  "numpy": "1.24.2"
+ },
+ "node_x_64_512m_load": {
+  "node": "node_x_64_512m_load",
+  "arch": "aarch64",
+  "py": "3.11.2",
+  "numpy": "1.24.2"
+ }
+}

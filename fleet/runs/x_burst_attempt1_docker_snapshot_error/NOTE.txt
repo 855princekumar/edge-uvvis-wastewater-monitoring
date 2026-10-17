@@ -1,0 +1,1 @@
+Burst attempt 1 (01:04): docker compose up failed for arm64 nodes: 'parent snapshot ... does not exist' (Docker image store error). No data. Rebuilt arm64 image and retried.

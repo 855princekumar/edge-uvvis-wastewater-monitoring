@@ -1,0 +1,10 @@
+{
+ "_note": "Emulated device profiles. memory/cpus are enforced by Docker cgroups; CPU SPEED is NOT emulated (QEMU translation on x86 is slower than a real Pi and not proportional). Label every result 'emulated'.",
+ "node_ref_amd64":     {"platform": "linux/amd64",  "mem": "4g",   "cpus": 4,   "stress": 0, "cnn": 1, "analogue": "host reference (native)"},
+ "node_pi4_64_4g":     {"platform": "linux/arm64",  "mem": "4g",   "cpus": 4,   "stress": 0, "cnn": 1, "analogue": "Pi 4/5, 64-bit OS, 4 GB"},
+ "node_pi4_64_1g_1c":  {"platform": "linux/arm64",  "mem": "1g",   "cpus": 1,   "stress": 0, "cnn": 1, "analogue": "Pi 4, 1 GB, single core budget"},
+ "node_pi3_32_1g":     {"platform": "linux/arm/v7", "mem": "1g",   "cpus": 4,   "stress": 0, "cnn": 1, "analogue": "Pi 3, 32-bit OS, 1 GB"},
+ "node_zero2_32_512m": {"platform": "linux/arm/v7", "mem": "512m", "cpus": 1,   "stress": 0, "cnn": 1, "analogue": "Pi Zero 2 W class, 32-bit, 512 MB"},
+ "node_x_32_256m_half":{"platform": "linux/arm/v7", "mem": "256m", "cpus": 0.5, "stress": 0, "cnn": 0, "analogue": "extreme: 256 MB, half core (throttled)"},
+ "node_x_64_512m_load":{"platform": "linux/arm64",  "mem": "512m", "cpus": 1,   "stress": 1, "cnn": 0, "analogue": "extreme: co-located CPU load (e.g. camera pipeline)"}
+}

@@ -1,0 +1,7 @@
+node_ref_amd64	linux/amd64	4g	4	0
+node_pi4_64_4g	linux/arm64	4g	4	0
+node_pi4_64_1g_1c	linux/arm64	1g	1	0
+node_pi3_32_1g	linux/arm/v7	1g	4	0
+node_zero2_32_512m	linux/arm/v7	512m	1	0
+node_x_32_256m_half	linux/arm/v7	256m	0.5	0
+node_x_64_512m_load	linux/arm64	512m	1	1

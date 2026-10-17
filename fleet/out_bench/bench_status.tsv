@@ -1,0 +1,8 @@
+profile	platform	mem	cpus	stress	exit_code	oom_killed	seconds	repeats
+node_ref_amd64	linux/amd64	4g	4	0	0	false	43	1000
+node_pi4_64_4g	linux/arm64	4g	4	0	0	false	156	1000
+node_pi4_64_1g_1c	linux/arm64	1g	1	0	0	false	572	1000
+node_pi3_32_1g	linux/arm/v7	1g	4	0	0	false	51	300
+node_zero2_32_512m	linux/arm/v7	512m	1	0	0	false	59	300
+node_x_32_256m_half	linux/arm/v7	256m	0.5	0	0	false	89	300
+node_x_64_512m_load	linux/arm64	512m	1	1	0	false	322	300
