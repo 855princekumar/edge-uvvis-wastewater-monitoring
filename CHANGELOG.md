@@ -1,5 +1,23 @@
 # Changelog
 
+## v1.2.0 (2026-10-17)
+
+### Fixed
+- Column selection: v1.0.1/v1.1.0 also read `validity_test3_range_scan_absorbance2550_m` (a validity-test
+  field, not a spectral channel) as a 216th channel. New opt-in flag `run_experiment.py --spectral-only` keeps the
+  215 `scan_absorbance` channels (default unchanged so v1.0.1 stays exactly reproducible; verified).
+  `fleet/export_model.py` and `bench_edge.py` now use 215 channels.
+
+### Added
+- Corrected results with 215 channels: `results/batch-6_raw_215ch`, `batch-7_smoothsnv_215ch`,
+  `batch-8_smoothsnv_blocked_215ch`, `batch-9_raw_blocked_215ch` (the paper uses these).
+- 215-channel benchmarks: physical Raspberry Pi 4 (`fleet/real_pi/bench_pi4_real_1thread_215ch.json`), native and
+  emulated arm64 4 GB (`fleet/out_bench_215/`); re-exported model `fleet/models/pls_nh4.json` (12 LV, 215 inputs).
+- Robustness of the in-silico design study: `simulation/robust_sensitivity.py` (Morris/SALib, 220 parameter sets),
+  `simulation/robust_realmatrix.py` (bands added to the real Eawag spectra), `simulation/export_real.py`,
+  `simulation/robust_plot.py`, outputs and `fig_sim_robustness.png/.svg`. Outcome: Raman specification raised from
+  SNR 50 to SNR 100 (fluorescence-to-signal 3). Simulation and semi-synthetic, not hardware.
+
 ## v1.1.0 (2026-10-17)
 
 Revision release accompanying manuscript CSCEE-D-26-00739 (R1). The default behaviour of

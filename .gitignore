@@ -25,3 +25,4 @@ __pycache__/
 # v1.1.0 additions
 fleet/out/
 fleet/models/*.npy
+simulation/*.npy

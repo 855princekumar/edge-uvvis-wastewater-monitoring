@@ -228,6 +228,12 @@ def load_eawag(root: Path, args, logger):
     # ---- spectra: read only absorbance + timestamp + valid_data ----
     hdr = pd.read_csv(spec_path, nrows=0).columns.tolist()
     abs_cols = [c for c in hdr if _abs_wavelength(c) is not None]
+    if getattr(args, "spectral_only", False):
+        # v1.0.1 also matched 'validity_test3_range_scan_absorbance2550_m' (a validity-test
+        # field, not a spectral channel); --spectral-only keeps the scan_absorbance channels only
+        dropped = [c for c in abs_cols if not str(c).lower().startswith("scan_absorbance")]
+        abs_cols = [c for c in abs_cols if str(c).lower().startswith("scan_absorbance")]
+        logger.info("--spectral-only: dropped non-spectral columns %s", dropped)
     if len(abs_cols) < 10:
         logger.warning("Only %d absorbance columns detected.", len(abs_cols))
         return None
@@ -988,6 +994,9 @@ def build_parser():
     p.add_argument("--snv", action="store_true", help="SNV normalisation")
     p.add_argument("--tag", help="optional label appended to batch folder name")
     p.add_argument("--no-bootstrap", action="store_true")
+    p.add_argument("--spectral-only", action="store_true",
+                   help="use only scan_absorbance channels (drops the validity-test column that "
+                        "v1.0.1 included; recommended, default off to keep v1.0.1 reproducible)")
     return p
 
 

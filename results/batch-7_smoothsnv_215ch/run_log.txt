@@ -1,0 +1,48 @@
+20:33:06 INFO    Batch output dir: C:\cscee\repo\results\batch-7_smoothsnv_215ch
+20:33:10 INFO    ============================================================
+20:33:10 INFO    Acquiring data
+20:33:11 INFO    Data zip already extracted: 2_data.zip
+20:33:11 INFO    Eawag mode: labels=laboratory_measurements.csv  spectra=flume_scan_absorbance.csv
+20:33:11 INFO    --spectral-only: dropped non-spectral columns ['validity_test3_range_scan_absorbance2550_m']
+20:33:11 INFO    Reading 215 absorbance columns from spectra (may take a moment)
+20:33:15 INFO    Kept 118892/118892 valid spectra rows.
+20:33:15 INFO    lab_nh4_mg_l: 510 grab samples matched to spectra
+20:33:15 INFO    lab_nh4_mg_l: span 2023-05-09T08:00 -> 2023-10-24T15:30; median gap between grab samples 2.00 h
+20:33:15 INFO    lab_po4_mg_l: 510 grab samples matched to spectra
+20:33:15 INFO    lab_po4_mg_l: span 2023-05-09T08:00 -> 2023-10-24T15:30; median gap between grab samples 2.00 h
+20:33:15 INFO    lab_doc_mg_l: 510 grab samples matched to spectra
+20:33:15 INFO    lab_doc_mg_l: span 2023-05-09T08:00 -> 2023-10-24T15:30; median gap between grab samples 2.00 h
+20:33:15 INFO    Total runs to benchmark: 3
+20:33:15 INFO    ============================================================
+20:33:15 INFO    BENCHMARK: flume_scan_absorbance/lab_nh4_mg_l
+20:33:35 INFO      running 5-fold CV (random)...
+20:33:48 INFO        fold 1: n_val=102  PLS(nc=15) R2=0.875  CNN1D R2=0.733
+20:33:59 INFO        fold 2: n_val=102  PLS(nc=10) R2=0.855  CNN1D R2=0.773
+20:34:09 INFO        fold 3: n_val=102  PLS(nc=11) R2=0.823  CNN1D R2=0.733
+20:34:19 INFO        fold 4: n_val=102  PLS(nc=7) R2=0.846  CNN1D R2=0.754
+20:34:34 INFO        fold 5: n_val=102  PLS(nc=12) R2=0.900  CNN1D R2=0.721
+20:34:34 INFO      PLS CV: R2=0.860+/-0.026  RMSE=3.801+/-0.344
+20:34:34 INFO      CNN1D CV: R2=0.743+/-0.018  RMSE=5.169+/-0.211
+20:34:36 INFO    ============================================================
+20:34:36 INFO    BENCHMARK: flume_scan_absorbance/lab_po4_mg_l
+20:34:48 INFO      running 5-fold CV (random)...
+20:35:02 INFO        fold 1: n_val=102  PLS(nc=5) R2=0.672  CNN1D R2=0.533
+20:35:19 INFO        fold 2: n_val=102  PLS(nc=15) R2=0.663  CNN1D R2=0.517
+20:35:35 INFO        fold 3: n_val=102  PLS(nc=13) R2=0.731  CNN1D R2=0.555
+20:35:53 INFO        fold 4: n_val=102  PLS(nc=13) R2=0.570  CNN1D R2=0.413
+20:36:04 INFO        fold 5: n_val=102  PLS(nc=14) R2=0.659  CNN1D R2=0.463
+20:36:04 INFO      PLS CV: R2=0.659+/-0.051  RMSE=0.566+/-0.044
+20:36:04 INFO      CNN1D CV: R2=0.496+/-0.051  RMSE=0.689+/-0.030
+20:36:05 INFO    ============================================================
+20:36:05 INFO    BENCHMARK: flume_scan_absorbance/lab_doc_mg_l
+20:36:17 INFO      running 5-fold CV (random)...
+20:36:27 INFO        fold 1: n_val=102  PLS(nc=13) R2=0.501  CNN1D R2=0.311
+20:36:37 INFO        fold 2: n_val=102  PLS(nc=12) R2=0.432  CNN1D R2=0.058
+20:36:48 INFO        fold 3: n_val=102  PLS(nc=19) R2=-0.601  CNN1D R2=0.288
+20:36:58 INFO        fold 4: n_val=102  PLS(nc=8) R2=0.562  CNN1D R2=0.362
+20:37:07 INFO        fold 5: n_val=102  PLS(nc=11) R2=0.339  CNN1D R2=0.164
+20:37:07 INFO      PLS CV: R2=0.247+/-0.430  RMSE=41.727+/-5.587
+20:37:07 INFO      CNN1D CV: R2=0.236+/-0.111  RMSE=44.529+/-6.276
+20:37:08 INFO    ============================================================
+20:37:08 INFO    DONE. Batch outputs in C:\cscee\repo\results\batch-7_smoothsnv_215ch
+20:37:08 INFO    Cross-batch summary updated: C:\cscee\repo\results\batches_summary.csv

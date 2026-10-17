@@ -12,7 +12,7 @@ import run_experiment as RE
 
 ap = argparse.ArgumentParser(); ap.add_argument("--data-root", default="data/raw/extracted")
 ap.add_argument("--n-replay", type=int, default=3600); a = ap.parse_args()
-args = argparse.Namespace(targets="nh4", target=None, join_tol="5min", smooth=True, snv=True)
+args = argparse.Namespace(targets="nh4", target=None, join_tol="5min", smooth=True, snv=True, spectral_only=True)
 log = logging.getLogger("export"); logging.basicConfig(level=logging.INFO)
 runs = RE.load_eawag(Path(a.data_root), args, log); r = runs[0]
 X = RE.preprocess(r["X"], args); y = r["y"]
@@ -31,7 +31,7 @@ json.dump({"target": "lab_nh4_mg_l", "n_components": int(nc), "smooth": True, "s
 import pandas as pd
 spec_path = next(Path(a.data_root).rglob("flume_scan_absorbance.csv"))
 hdr = pd.read_csv(spec_path, nrows=0).columns.tolist()
-abs_cols = [c for c in hdr if RE._abs_wavelength(c) is not None]
+abs_cols = [c for c in hdr if RE._abs_wavelength(c) is not None and str(c).lower().startswith("scan_absorbance")]
 abs_cols = [abs_cols[i] for i in np.argsort([RE._abs_wavelength(c) for c in abs_cols])]
 use = abs_cols + (["valid_data"] if "valid_data" in hdr else [])
 D = pd.read_csv(spec_path, usecols=use, nrows=a.n_replay * 3)

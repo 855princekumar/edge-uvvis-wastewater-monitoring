@@ -81,7 +81,9 @@ Smoothed + SNV configuration (`results/batch-2_smoothsnv/`):
 | Phosphate (PO4) | 0.663 +/- 0.055 | 0.494 +/- 0.048 | ~1.9 |
 | DOC | 0.243 +/- 0.426 | 0.237 +/- 0.087 | ~1.4 |
 
-Raw-spectra results are in `results/batch-1_raw/`; a machine-readable comparison of all runs
+These are the original v1.0.1 values (216 inputs, see the channel correction under v1.2.0 below); the
+corrected 215-channel values used in the revised paper are in `results/batch-7_smoothsnv_215ch/` (ammonium PLS
+0.860 +/- 0.026, 1D-CNN 0.743 +/- 0.018). Raw-spectra results are in `results/batch-1_raw/`; a machine-readable comparison of all runs
 is in [`results/batches_summary.csv`](results/batches_summary.csv). On this dataset a
 lightweight PLS baseline matched or exceeded the 1D-CNN on every target, in both
 configurations; DOC could not be reliably recovered from UV-Vis alone.
@@ -104,7 +106,7 @@ bed for the hardware and pilot stages that follow:
 |---|---|---|---|
 | 1. Real data | Eawag raw-wastewater UV-Vis spectra + lab references, random and time-blocked CV | model accuracy on a real matrix; optimism of random CV | a built device; Indian STP influent/effluent |
 | 2. Real hardware | `bench_edge.py` and `edge_node.py` on a physical Raspberry Pi 4 (4 GB) over a VPN | compute cost and end-to-end path on the target board | sensing, fouling, power |
-| 3. Emulation | Pi-class Docker/QEMU profiles and an MQTT fleet replaying the real spectra | memory/CPU budgets and boards not available; loss; cross-architecture agreement | hardware timings (emulation overstated Pi 4 latency 9-31x) |
+| 3. Emulation | Pi-class Docker/QEMU profiles and an MQTT fleet replaying the real spectra | memory/CPU budgets and boards not available; loss; cross-architecture agreement | hardware timings (emulation overstated Pi 4 latency 9-30x) |
 | 4. Simulation | `simulation/` physics-informed UV-Vis + Raman study | Raman hardware requirements under stated assumptions | validation of Raman fusion |
 
 ### Computational setup
@@ -123,21 +125,29 @@ inner PLS latent-variable selection also blocked.
 ```bash
 # regression check: reproduces results/batch-2_smoothsnv exactly
 python run_experiment.py --targets "nh4,po4,doc" --kfold 5 --smooth --snv --tag repro_smoothsnv
-python run_experiment.py --targets "nh4,po4,doc" --kfold 5 --smooth --snv --cv blocked --tag smoothsnv_blocked
-python run_experiment.py --targets "nh4,po4,doc" --kfold 5 --cv blocked --tag raw_blocked
+python run_experiment.py --spectral-only --targets "nh4,po4,doc" --kfold 5 --smooth --snv --tag smoothsnv_215ch
+python run_experiment.py --spectral-only --targets "nh4,po4,doc" --kfold 5 --smooth --snv --cv blocked --tag smoothsnv_blocked_215ch
+python run_experiment.py --spectral-only --targets "nh4,po4,doc" --kfold 5 --tag raw_215ch
+python run_experiment.py --spectral-only --targets "nh4,po4,doc" --kfold 5 --cv blocked --tag raw_blocked_215ch
 python block_spans.py      # date range of each blocked fold
 ```
 
-CV R² (mean +/- sd), smoothed + SNV (`results/batch-4_smoothsnv_blocked/`):
+CV R² (mean +/- sd), smoothed + SNV, 215 spectral channels (`results/batch-7_smoothsnv_215ch/`, `results/batch-8_smoothsnv_blocked_215ch/`):
 
 | Target | PLS random | PLS blocked | 1D-CNN random | 1D-CNN blocked |
 |---|---|---|---|---|
-| Ammonium | 0.845 +/- 0.039 | 0.816 +/- 0.071 | 0.729 +/- 0.020 | 0.594 +/- 0.190 |
-| Phosphate | 0.663 +/- 0.055 | 0.536 +/- 0.092 | 0.494 +/- 0.048 | 0.281 +/- 0.197 |
-| DOC | 0.243 +/- 0.426 | -0.648 +/- 1.251 | 0.237 +/- 0.087 | -0.351 +/- 0.562 |
+| Ammonium | 0.860 +/- 0.026 | 0.821 +/- 0.076 | 0.743 +/- 0.018 | 0.596 +/- 0.202 |
+| Phosphate | 0.659 +/- 0.051 | 0.564 +/- 0.096 | 0.496 +/- 0.051 | 0.352 +/- 0.153 |
+| DOC | 0.247 +/- 0.430 | -0.522 +/- 1.110 | 0.236 +/- 0.111 | -0.172 +/- 0.289 |
 
 Holding out whole periods costs PLS little for ammonium but costs the CNN more, and DOC does
-not generalise to unseen periods at all. Raw-spectra blocked results: `results/batch-5_raw_blocked/`.
+not generalise to unseen periods at all. Raw-spectra results: `results/batch-6_raw_215ch/`, `results/batch-9_raw_blocked_215ch/`.
+
+**Channel correction (v1.2.0).** The column selection of v1.0.1/v1.1.0 also read the dataset's
+`validity_test3_range_scan_absorbance2550_m` field as a 216th channel. `--spectral-only` keeps the 215
+`scan_absorbance` channels; it is off by default so that v1.0.1 stays exactly reproducible, and all
+v1.2.0 results and the paper use it (`results/batch-6..9_*_215ch`). PLS changed little; the untuned CNN on
+raw spectra changed more. Batches 1-5 are the earlier 216-input runs, kept for the record.
 
 ### Edge inference benchmark and emulated Pi-class fleet (EMULATED, not Raspberry Pi hardware)
 
@@ -160,9 +170,12 @@ python plot_fleet.py runs/my_run figs
 
 | Measurement | PLS (12 LV) | 1D-CNN (NumPy) | Source |
 |---|---|---|---|
-| **Physical Raspberry Pi 4, 4 GB**, median / p95 (ms) | 0.187 / 0.198 | 2.76 / 2.89 | `fleet/real_pi/` |
-| Emulated arm64 4 GB profile, median (ms) | 1.70 | 85.7 | `fleet/out_bench/` |
-| Native x86-64 container, median (ms) | 0.07 | 0.62 | `fleet/out_bench/` |
+| **Physical Raspberry Pi 4, 4 GB**, median / p95 (ms) | 0.189 / 0.214 | 2.84 / 2.94 | `fleet/real_pi/bench_pi4_real_1thread_215ch.json` |
+| Emulated arm64 4 GB profile, median (ms) | 1.63 | 86.5 | `fleet/out_bench_215/` |
+| Native x86-64 container, median (ms) | 0.08 | 0.67 | `fleet/out_bench_215/` |
+
+215-channel inputs; the other emulated profiles (`fleet/out_bench/`) and the fleet runs used the earlier 216-input model
+(under 1% difference in computation).
 
 All seven emulated profiles, down to 256 MB and half a core, completed without OOM. PyTorch
 is not available on 32-bit ARM; the NumPy CNN covers it.
@@ -195,6 +208,13 @@ A 30-min run is not the 72 h soak test of Stage 2, so Stage 2 is only partially 
 UV-Vis and Raman spectra under stated assumptions and estimate when Raman would reduce
 prediction error. Outputs: `simulation/sim_*.csv`, `simulation/fig_*.png`. These results are
 conditional on the assumptions and are used only to set hardware requirements.
+
+Robustness (v1.2.0): `simulation/robust_sensitivity.py` (Morris global sensitivity analysis with SALib, ten
+assumptions, 220 parameter sets) and `simulation/robust_realmatrix.py` (nitrate and nitrite bands added to the
+510 real Eawag spectra; export them first with `python simulation/export_real.py data/raw/extracted simulation/real510.npy`,
+not committed). Results: a 10% nitrite gain needed SNR <= 50 in 65% and SNR <= 100 in 91% of parameter sets; on the real matrix,
+UV-Vis alone gave nitrate R² 0.967 and nitrite R² 0.59, and Raman fusion reduced nitrite RMSE by
+7% / 32% / 69% at SNR 50 / 100 / 300 (fluorescence-to-signal 3). Hence the Stage 3 specification SNR >= 100.
 
 ## How to cite
 

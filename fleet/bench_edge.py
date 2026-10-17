@@ -16,7 +16,7 @@ import argparse, json, os, platform, resource, time, statistics, io, pickle
 
 import numpy as np
 
-N_WL = 216
+N_WL = 215   # scan_absorbance channels 200-735 nm (v1.1.0 used 216 incl. one validity column)
 
 
 def device_info():
