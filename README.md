@@ -198,6 +198,9 @@ conditional on the assumptions and are used only to set hardware requirements.
 
 ## How to cite
 
+Software archive: v1.1.0 https://doi.org/10.5281/zenodo.23434324 (all versions:
+https://doi.org/10.5281/zenodo.21904541).
+
 Please cite **both** the primary dataset (DOI 10.25678/000D3C) and this repository; see
 [CITATION.cff](CITATION.cff) and [CREDITS.md](CREDITS.md).
 
