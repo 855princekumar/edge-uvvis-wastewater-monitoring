@@ -8,9 +8,11 @@ def on_msg(c, u, m, *a):
         meta[m.topic[6:]] = json.loads(m.payload); json.dump(meta, open("/out/nodes.json", "w"), indent=1)
     else:
         d = json.loads(m.payload); d["t_coll"] = time.time(); f.write(json.dumps(d) + "\n"); f.flush()
-cl = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, client_id="collector") if hasattr(mqtt, "CallbackAPIVersion") else mqtt.Client(client_id="collector")
+cl = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, client_id="collector", clean_session=False) if hasattr(mqtt, "CallbackAPIVersion") else mqtt.Client(client_id="collector", clean_session=False)
 cl.on_message = on_msg
+cl.on_connect = lambda c, *a: c.subscribe([("results/#", 1), ("hello/#", 1)])
+cl.reconnect_delay_set(1, 10)
 for i in range(60):
     try: cl.connect(os.environ.get("BROKER", "broker"), 1883, 60); break
     except Exception: time.sleep(1)
-cl.subscribe([("results/#", 1), ("hello/#", 1)]); cl.loop_forever()
+cl.loop_forever()

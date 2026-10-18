@@ -7,7 +7,8 @@ import numpy as np
 import paho.mqtt.client as mqtt
 S = np.load("/models/replay.npy"); nodes = os.environ["NODES"].split(",")
 rate = float(os.environ.get("RATE_HZ", "1")); dur = float(os.environ.get("DURATION_S", "1800"))
-cl = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, client_id="replayer") if hasattr(mqtt, "CallbackAPIVersion") else mqtt.Client(client_id="replayer")
+cl = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, client_id="replayer", clean_session=False) if hasattr(mqtt, "CallbackAPIVersion") else mqtt.Client(client_id="replayer", clean_session=False)
+cl.max_queued_messages_set(0); cl.reconnect_delay_set(1, 10)   # QoS 1 messages are queued while the broker is down
 for i in range(60):
     try: cl.connect(os.environ.get("BROKER", "broker"), 1883, 60); break
     except Exception: time.sleep(1)

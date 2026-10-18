@@ -37,12 +37,13 @@ def on_msg(cl, _, msg):
         t1 = time.perf_counter(); cnn(np.asarray(d["spectrum"], np.float32)[None]); out["cnn_ms"] = (time.perf_counter() - t1) * 1e3
     cl.publish(f"results/{NODE}", json.dumps(out), qos=1)
 
-cl = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, client_id=NODE) if hasattr(mqtt, "CallbackAPIVersion") else mqtt.Client(client_id=NODE)
+# persistent session + (re)subscribe in on_connect: survives broker restarts and network drops
+cl = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, client_id=NODE, clean_session=False) if hasattr(mqtt, "CallbackAPIVersion") else mqtt.Client(client_id=NODE, clean_session=False)
 cl.on_message = lambda c, u, m, *a: on_msg(c, u, m)
+cl.on_connect = lambda c, *a: (c.subscribe(f"spectra/{NODE}", qos=1),
+    c.publish(f"hello/{NODE}", json.dumps({"node": NODE, "arch": platform.machine(), "py": platform.python_version(), "numpy": np.__version__}), qos=1, retain=True))
+cl.reconnect_delay_set(1, 10)
 for i in range(60):
     try: cl.connect(BROKER, 1883, 60); break
     except Exception: time.sleep(1)
-cl.subscribe(f"spectra/{NODE}", qos=1)
-cl.publish(f"hello/{NODE}", json.dumps({"node": NODE, "arch": platform.machine(), "py": platform.python_version(),
-                                         "numpy": np.__version__}), qos=1, retain=True)
 cl.loop_forever()

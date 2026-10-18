@@ -1,0 +1,48 @@
+{
+ "n_cleaning_events": 39,
+ "wavelength_nm": 700,
+ "turbidity_fit": {
+  "slope_per_log_fnu": 29.653499047444758,
+  "r": 0.7823654673072404
+ },
+ "step": {
+  "n": 37,
+  "median": -22.39095,
+  "iqr": [
+   -27.229250000000004,
+   0.1883000000000017
+  ],
+  "frac_positive": 0.2702702702702703,
+  "wilcoxon_vs_zero_p": 1.2985517969354987e-05,
+  "control_median": -21.42005,
+  "control_frac_positive": 0.2972972972972973,
+  "wilcoxon_vs_control_p": 0.7655571073264582
+ },
+ "step_resid": {
+  "n": 27,
+  "median": 0.4551161984323624,
+  "iqr": [
+   -1.5801098738701205,
+   2.9718392624501346
+  ],
+  "frac_positive": 0.5925925925925926,
+  "wilcoxon_vs_zero_p": 0.23857179284095764,
+  "control_median": 2.70883886211573,
+  "control_frac_positive": 0.6296296296296297,
+  "wilcoxon_vs_control_p": 0.03620612621307373
+ },
+ "drift": {
+  "n_intervals": 38,
+  "median_slope_abs_m_per_day": 0.25084999999999674,
+  "frac_positive_slope": 0.5526315789473685,
+  "wilcoxon_slope_vs_zero_p": 0.6565873849904165
+ },
+ "detector": {
+  "k_sigma": 3.0,
+  "sigma_abs_m": 2.104180049999997,
+  "n_cycles": 38,
+  "frac_alarmed": 0.18421052631578946,
+  "median_lead_days": 0.6833333333333333,
+  "median_cycle_days": 3.9763888888888888
+ }
+}

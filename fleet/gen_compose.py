@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 import json, os, sys
 P = {k: v for k, v in json.load(open("profiles.json")).items() if not k.startswith("_")}
+if os.environ.get("ONLY_NODES"):   # optional subset of emulated profiles, e.g. for a long soak test
+    P = {k: v for k, v in P.items() if k in os.environ["ONLY_NODES"].split(",")}
 rate = sys.argv[1] if len(sys.argv) > 1 else "1"; dur = sys.argv[2] if len(sys.argv) > 2 else "1800"
 # optional: EXTRA_NODES=a,b (external/physical nodes that subscribe over the network), PUBLISH_BROKER=1
 extra = [n for n in os.environ.get("EXTRA_NODES", "").split(",") if n]

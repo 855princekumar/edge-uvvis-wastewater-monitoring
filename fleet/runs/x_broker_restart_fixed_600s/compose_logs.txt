@@ -1,0 +1,75 @@
+broker-1  | 1792306896: Info: running mosquitto as user: mosquitto.
+broker-1  | 1792306896: mosquitto version 2.1.2 starting
+broker-1  | 1792306896: Config loaded from /mosquitto/config/mosquitto.conf.
+broker-1  | 1792306896: Bridge support available.
+broker-1  | 1792306896: Persistence support available.
+broker-1  | 1792306896: TLS support available.
+broker-1  | 1792306896: TLS-PSK support available.
+broker-1  | 1792306896: Websockets support available.
+broker-1  | 1792306896: Opening ipv4 listen socket on port 1883.
+broker-1  | 1792306896: Opening ipv6 listen socket on port 1883.
+broker-1  | 1792306896: mosquitto version 2.1.2 running
+broker-1  | 1792306897: New connection from 172.18.0.4:39805 on port 1883.
+broker-1  | 1792306897: New client connected from 172.18.0.4:39805 as collector (p4, c0, k60).
+broker-1  | 1792306899: New connection from 172.18.0.11:55405 on port 1883.
+broker-1  | 1792306899: New client connected from 172.18.0.11:55405 as replayer (p4, c0, k60).
+broker-1  | 1792306901: New connection from 172.18.0.6:53293 on port 1883.
+broker-1  | 1792306901: New client connected from 172.18.0.6:53293 as node_ref_amd64 (p4, c0, k60).
+broker-1  | 1792306908: New connection from 172.18.0.9:59929 on port 1883.
+broker-1  | 1792306908: New client connected from 172.18.0.9:59929 as node_pi3_32_1g (p4, c0, k60).
+broker-1  | 1792306908: New connection from 172.18.0.7:48775 on port 1883.
+broker-1  | 1792306908: New client connected from 172.18.0.7:48775 as node_zero2_32_512m (p4, c0, k60).
+broker-1  | 1792306914: New connection from 172.18.0.3:35171 on port 1883.
+broker-1  | 1792306915: New client connected from 172.18.0.3:35171 as node_pi4_64_4g (p4, c0, k60).
+broker-1  | 1792306915: New connection from 172.18.0.8:47741 on port 1883.
+broker-1  | 1792306915: New client connected from 172.18.0.8:47741 as node_x_32_256m_half (p4, c0, k60).
+broker-1  | 1792306956: New connection from 172.18.0.5:41903 on port 1883.
+broker-1  | 1792306956: New client connected from 172.18.0.5:41903 as node_pi4_64_1g_1c (p4, c0, k60).
+broker-1  | 1792306957: New connection from 172.18.0.10:40383 on port 1883.
+broker-1  | 1792306957: New client connected from 172.18.0.10:40383 as node_x_64_512m_load (p4, c0, k60).
+broker-1  | 1792307293: mosquitto version 2.1.2 terminating
+broker-1  | 1792307293: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792307294: Info: running mosquitto as user: mosquitto.
+broker-1  | 1792307294: Restored 7 base messages
+broker-1  | 1792307294: Restored 7 retained messages
+broker-1  | 1792307294: Restored 9 clients
+broker-1  | 1792307294: Restored 9 subscriptions
+broker-1  | 1792307294: Restored 0 client messages
+broker-1  | 1792307294: mosquitto version 2.1.2 starting
+broker-1  | 1792307294: Config loaded from /mosquitto/config/mosquitto.conf.
+broker-1  | 1792307294: Bridge support available.
+broker-1  | 1792307294: Persistence support available.
+broker-1  | 1792307294: TLS support available.
+broker-1  | 1792307294: TLS-PSK support available.
+broker-1  | 1792307294: Websockets support available.
+broker-1  | 1792307294: Opening ipv4 listen socket on port 1883.
+broker-1  | 1792307294: Opening ipv6 listen socket on port 1883.
+broker-1  | 1792307294: mosquitto version 2.1.2 running
+broker-1  | 1792307294: New connection from 172.18.0.6:55857 on port 1883.
+broker-1  | 1792307294: New connection from 172.18.0.4:52843 on port 1883.
+broker-1  | 1792307294: Client node_ref_amd64 [(null):0] disconnected: session taken over.
+broker-1  | 1792307294: New client connected from 172.18.0.6:55857 as node_ref_amd64 (p4, c0, k60).
+broker-1  | 1792307294: Client collector [(null):0] disconnected: session taken over.
+broker-1  | 1792307294: New client connected from 172.18.0.4:52843 as collector (p4, c0, k60).
+broker-1  | 1792307294: New connection from 172.18.0.11:52767 on port 1883.
+broker-1  | 1792307294: Client replayer [(null):0] disconnected: session taken over.
+broker-1  | 1792307294: New client connected from 172.18.0.11:52767 as replayer (p4, c0, k60).
+broker-1  | 1792307295: New connection from 172.18.0.9:39259 on port 1883.
+broker-1  | 1792307295: Client node_pi3_32_1g [(null):0] disconnected: session taken over.
+broker-1  | 1792307295: New client connected from 172.18.0.9:39259 as node_pi3_32_1g (p4, c0, k60).
+broker-1  | 1792307295: New connection from 172.18.0.8:51917 on port 1883.
+broker-1  | 1792307295: New connection from 172.18.0.7:38979 on port 1883.
+broker-1  | 1792307295: Client node_x_32_256m_half [(null):0] disconnected: session taken over.
+broker-1  | 1792307295: New client connected from 172.18.0.8:51917 as node_x_32_256m_half (p4, c0, k60).
+broker-1  | 1792307295: Client node_zero2_32_512m [(null):0] disconnected: session taken over.
+broker-1  | 1792307295: New client connected from 172.18.0.7:38979 as node_zero2_32_512m (p4, c0, k60).
+broker-1  | 1792307295: New connection from 172.18.0.3:49353 on port 1883.
+broker-1  | 1792307295: Client node_pi4_64_4g [(null):0] disconnected: session taken over.
+broker-1  | 1792307295: New client connected from 172.18.0.3:49353 as node_pi4_64_4g (p4, c0, k60).
+broker-1  | 1792307295: New connection from 172.18.0.5:39879 on port 1883.
+broker-1  | 1792307295: Client node_pi4_64_1g_1c [(null):0] disconnected: session taken over.
+broker-1  | 1792307295: New client connected from 172.18.0.5:39879 as node_pi4_64_1g_1c (p4, c0, k60).
+broker-1  | 1792307295: New connection from 172.18.0.10:54365 on port 1883.
+broker-1  | 1792307295: Client node_x_64_512m_load [(null):0] disconnected: session taken over.
+broker-1  | 1792307295: New client connected from 172.18.0.10:54365 as node_x_64_512m_load (p4, c0, k60).
+broker-1  | 1792307619: Client replayer [172.18.0.11:52767] disconnected: connection closed by client.
