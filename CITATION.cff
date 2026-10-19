@@ -12,10 +12,13 @@ authors:
 repository-code: "https://github.com/855princekumar/edge-uvvis-wastewater-monitoring"
 url: "https://github.com/855princekumar/edge-uvvis-wastewater-monitoring"
 version: v1.3.1
-doi: 10.5281/zenodo.21904541
+doi: 10.5281/zenodo.23469030
 date-released: 2026-10-19
 license: MIT
 identifiers:
+  - type: doi
+    value: 10.5281/zenodo.23469030
+    description: "Version v1.3.1 (this release)"
   - type: doi
     value: 10.5281/zenodo.23467524
     description: "Version v1.3.0 (previous release)"

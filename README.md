@@ -229,7 +229,7 @@ UV-Vis alone gave nitrate R² 0.967 and nitrite R² 0.59, and Raman fusion reduc
 
 ## How to cite
 
-Software archive: v1.3.1 (DOI below once minted); v1.3.0 https://doi.org/10.5281/zenodo.23467524 (v1.2.0: https://doi.org/10.5281/zenodo.23438582; v1.1.0: https://doi.org/10.5281/zenodo.23434324; all versions:
+Software archive: v1.3.1 https://doi.org/10.5281/zenodo.23469030 (v1.3.0: https://doi.org/10.5281/zenodo.23467524; v1.2.0: https://doi.org/10.5281/zenodo.23438582; v1.1.0: https://doi.org/10.5281/zenodo.23434324; all versions:
 https://doi.org/10.5281/zenodo.21904541).
 
 Please cite **both** the primary dataset (DOI 10.25678/000D3C) and this repository; see
