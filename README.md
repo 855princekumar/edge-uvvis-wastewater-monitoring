@@ -86,7 +86,7 @@ python sim_fusion.py && python analyse.py && python plot_drift.py
 python robust_sensitivity.py && python robust_realmatrix.py real510.npy && python robust_plot.py
 ```
 
-**Diagrams:** `python figures/make_figures.py figures/out` and `python figures/make_graphical_abstract.py figures/out`.
+**Diagrams and plots:** `python figures/make_figures.py figures/out`, `python figures/make_graphical_abstract.py figures/out` and `python figures/replot_scatter.py figures/out` (predicted-versus-measured plots from the stored hold-out predictions).
 
 ## Software environment
 

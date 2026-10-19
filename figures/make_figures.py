@@ -41,8 +41,8 @@ arrow(ax, 13.9, 4.2, 11.7, 5.2); ax.text(13.05, 4.85, "flush", fontsize=7.2, col
 arrow(ax, 9.2, 3.25, 8.3, 3.25); ax.text(8.75, 3.4, "data", fontsize=6.6, color=C["ink"], ha="center", va="bottom")
 arrow(ax, 4.75, 3.2, 3.65, 3.2); ax.text(4.2, 3.35, "results", fontsize=6.6, color=C["ink"], ha="center", va="bottom")
 arrow(ax, 1.85, 2.0, 1.85, 1.4); ax.text(2.05, 1.6, "alerts", fontsize=7.0, color=C["ink"], ha="left")
-ax.text(8.0, 7.85, "Measurement (Sections 3.1, 3.4)", ha="center", fontsize=8.2, color=C["grey"])
-ax.text(6.5, 1.55, "Edge processing (Sections 4.5, 5.4)", ha="center", fontsize=8.2, color=C["grey"])
+ax.text(8.0, 7.85, "Measurement (Section 2)", ha="center", fontsize=8.2, color=C["grey"])
+ax.text(6.5, 1.55, "Edge processing (Sections 3.4, 4.2)", ha="center", fontsize=8.2, color=C["grey"])
 fig.tight_layout(); [fig.savefig(OUT / f"fig1_architecture.{e}", dpi=300) for e in ("png", "svg", "pdf")]; plt.close(fig)
 
 # ---------------- Fig. 2: complementarity (illustrative curves) ----------------
