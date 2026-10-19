@@ -209,7 +209,7 @@ NH4 and PO4 have no direct UV-Vis absorbance: PLS predicts them as surrogates (V
 
 ### Figures
 
-Every figure in the paper is drawn by a script in this repository: `figures/make_figures.py` (Figs. 1, 2 and S7),
+Every figure in the paper is drawn by a script in this repository: `figures/make_graphical_abstract.py` (graphical abstract), `figures/make_figures.py` (Figs. 1, 2 and S7),
 `fleet/plot_fleet.py` (Figs. S8, S9), `simulation/analyse.py` (Fig. 4), `simulation/plot_drift.py` (Fig. S10),
 `simulation/robust_plot.py` (Fig. S11); Figs. 3 and S1-S6 come from `run_experiment.py`.
 

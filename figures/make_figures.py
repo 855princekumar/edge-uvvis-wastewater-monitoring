@@ -43,7 +43,7 @@ arrow(ax, 4.75, 3.2, 3.65, 3.2); ax.text(4.2, 3.35, "results", fontsize=6.6, col
 arrow(ax, 1.85, 2.0, 1.85, 1.4); ax.text(2.05, 1.6, "alerts", fontsize=7.0, color=C["ink"], ha="left")
 ax.text(8.0, 7.85, "Measurement (Sections 3.1, 3.4)", ha="center", fontsize=8.2, color=C["grey"])
 ax.text(6.5, 1.55, "Edge processing (Sections 4.5, 5.4)", ha="center", fontsize=8.2, color=C["grey"])
-fig.tight_layout(); [fig.savefig(OUT / f"fig1_architecture.{e}", dpi=300) for e in ("png", "svg")]; plt.close(fig)
+fig.tight_layout(); [fig.savefig(OUT / f"fig1_architecture.{e}", dpi=300) for e in ("png", "svg", "pdf")]; plt.close(fig)
 
 # ---------------- Fig. 2: complementarity (illustrative curves) ----------------
 fig, ax = plt.subplots(1, 2, figsize=(7.2, 2.7))
@@ -64,7 +64,7 @@ ax[1].plot(wn, spec, color=C["orange"], lw=1.6, label="Raman signal"); ax[1].plo
 ax[1].set_xlabel("Raman shift (cm$^{-1}$)"); ax[1].set_ylabel("Intensity (arbitrary units)"); ax[1].set_yticks([]); ax[1].set_ylim(0, 2.3)
 ax[1].set_title("(b) Raman: narrow, molecule-specific", fontsize=9); ax[1].legend(fontsize=6.8, frameon=False, loc="upper right")
 for a in ax: a.spines[["top", "right"]].set_visible(False)
-fig.tight_layout(); [fig.savefig(OUT / f"fig2_complementarity.{e}", dpi=300) for e in ("png", "svg")]; plt.close(fig)
+fig.tight_layout(); [fig.savefig(OUT / f"fig2_complementarity.{e}", dpi=300) for e in ("png", "svg", "pdf")]; plt.close(fig)
 
 # ---------------- Fig. S7: VIP / coefficients ----------------
 V = json.load(open("results/validation_v131/baselines_forward.json"))["vip"]
@@ -77,5 +77,5 @@ for k, (t, lab) in enumerate((("nh4", "Ammonium (NH$_4^+$), 12 LV"), ("po4", "Ph
     ax[1, k].plot(w, sp, color=C["ink"], lw=1.2); ax[1, k].set_ylabel("Mean raw\nabsorbance (m$^{-1}$)", fontsize=7.5)
     ax[1, k].set_xlabel("Wavelength (nm)")
 for a in ax.flat: a.spines[["top", "right"]].set_visible(False)
-fig.tight_layout(); [fig.savefig(OUT / f"fig_s7_vip.{e}", dpi=300) for e in ("png", "svg")]; plt.close(fig)
+fig.tight_layout(); [fig.savefig(OUT / f"fig_s7_vip.{e}", dpi=300) for e in ("png", "svg", "pdf")]; plt.close(fig)
 print("figures written to", OUT)
