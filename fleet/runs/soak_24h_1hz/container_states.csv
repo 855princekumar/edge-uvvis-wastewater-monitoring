@@ -1,0 +1,4 @@
+fleet-broker-1,running,0
+fleet-collector-1,running,0
+fleet-node_ref_amd64-1,running,0
+fleet-replayer-1,exited,137

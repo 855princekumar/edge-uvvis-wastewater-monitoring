@@ -200,7 +200,20 @@ Fleet test (real spectra, MQTT QoS 1, 1 Hz per node = 120x the real 2-min rate):
 - memory floor 128 MB (`fleet/out_bench_x/`): armv7 ran (peak RSS at the limit); arm64 was
   OOM-killed (exit 137).
 
-A 30-min run is not the 72 h soak test of Stage 2, so Stage 2 is only partially evaluated.
+After the v1.3.0 client fix the restart test lost no messages (`fleet/runs/x_broker_restart_fixed_600s/`).
+
+**24 h soak on real hardware (v1.3.0):** physical Raspberry Pi 4 over a VPN, 1 Hz, 85,981 spectra, five broker
+restarts and 16 unplanned interruptions > 10 s (longest 34 min): **0 messages lost**; Pi median end-to-end latency
+299 ms outside interruptions, about 1% of its four cores (`fleet/runs/soak_24h_1hz/`).
+Stage 2 asks for 72 h, so it is partially evaluated.
+
+### Statistical and real-data checks (v1.3.0)
+
+- PLS vs CNN, 10 x 5 repeated CV, corrected t-test: ammonium +0.18 R² (p = 0.001), phosphate +0.18 (p < 0.001);
+  under time-blocked CV PLS is better in all five periods (block-bootstrap CI excludes 0). A tuned CNN still trails PLS.
+- Learning curves: PLS plateaus at ~250 training spectra; the CNN is still improving at 408.
+- Fouling detection on the real record (39 logged cleanings, every ~4 days): no detectable drift (negative result).
+- Reproduce: `python validation/stats_repeated_cv.py data/raw/extracted results/validation_v130`, and likewise for the other two scripts.
 
 ### In-silico UV-Vis + Raman design study (SIMULATION, not a validation)
 

@@ -1,0 +1,24 @@
+1792307688 start
+14431 broker_restart_begin 2026-10-18T11:15:19Z (scheduled_extra)
+ Container fleet-broker-1 Restarting 
+ Container fleet-broker-1 Started 
+14459 broker_restart_end
+28921 broker_restart_begin 2026-10-18T15:16:57Z
+ Container fleet-broker-1 Restarting 
+ Container fleet-broker-1 Started 
+28945 broker_restart_end
+43223 broker_restart_begin 2026-10-18T19:15:11Z (scheduled_extra)
+ Container fleet-broker-1 Restarting 
+ Container fleet-broker-1 Started 
+43223 broker_restart_end
+57751 broker_restart_begin 2026-10-18T23:17:21Z
+ Container fleet-broker-1 Restarting 
+ Container fleet-broker-1 Started 
+57754 broker_restart_end
+72005 broker_restart_begin 2026-10-19T03:14:53Z (scheduled_extra)
+ Container fleet-broker-1 Restarting 
+ Container fleet-broker-1 Started 
+72006 broker_restart_end
+86067 replay_stop (soak shortened to 23.9 h)
+ Container fleet-replayer-1 Stopping 
+ Container fleet-replayer-1 Stopped 

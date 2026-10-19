@@ -1,0 +1,1 @@
+{"sent_per_node": 85981, "rate_hz": 1.0, "note": "soak stopped early by soak_schedule.sh; sent = highest sequence number received + 1"}

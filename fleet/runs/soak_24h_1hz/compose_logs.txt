@@ -1,0 +1,231 @@
+broker-1  | 1792307685: Info: running mosquitto as user: mosquitto.
+broker-1  | 1792307685: mosquitto version 2.1.2 starting
+broker-1  | 1792307685: Config loaded from /mosquitto/config/mosquitto.conf.
+broker-1  | 1792307685: Bridge support available.
+broker-1  | 1792307685: Persistence support available.
+broker-1  | 1792307685: TLS support available.
+broker-1  | 1792307685: TLS-PSK support available.
+broker-1  | 1792307685: Websockets support available.
+broker-1  | 1792307685: Opening ipv4 listen socket on port 1883.
+broker-1  | 1792307685: Opening ipv6 listen socket on port 1883.
+broker-1  | 1792307685: mosquitto version 2.1.2 running
+broker-1  | 1792307686: New connection from 172.18.0.4:59001 on port 1883.
+broker-1  | 1792307686: New client connected from 172.18.0.4:59001 as collector (p4, c0, k60).
+broker-1  | 1792307686: New connection from 172.18.0.5:35311 on port 1883.
+broker-1  | 1792307686: New client connected from 172.18.0.5:35311 as replayer (p4, c0, k60).
+broker-1  | 1792307686: New connection from 172.18.0.3:51537 on port 1883.
+broker-1  | 1792307686: New client connected from 172.18.0.3:51537 as node_ref_amd64 (p4, c0, k60).
+broker-1  | 1792307689: New connection from 172.18.0.1:34742 on port 1883.
+broker-1  | 1792307689: New client connected from 172.18.0.1:34742 as pi4_real_vpn (p4, c0, k60).
+broker-1  | 1792309485: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792311286: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792313087: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792314888: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792316689: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792318022: Client pi4_real_vpn [172.18.0.1:34742] disconnected: connection closed by client.
+broker-1  | 1792318486: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792320022: New connection from 172.18.0.1:46248 on port 1883.
+broker-1  | 1792320022: Client pi4_real_vpn [172.18.0.1:34742] disconnected: session taken over.
+broker-1  | 1792320022: New client connected from 172.18.0.1:46248 as pi4_real_vpn (p4, c0, k60).
+broker-1  | 1792320273: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792320280: Client pi4_real_vpn [172.18.0.1:46248] disconnected: No error information.
+broker-1  | 1792321103: New connection from 172.18.0.1:53300 on port 1883.
+broker-1  | 1792321103: Client pi4_real_vpn [172.18.0.1:46248] disconnected: session taken over.
+broker-1  | 1792321103: New client connected from 172.18.0.1:53300 as pi4_real_vpn (p4, c0, k60).
+broker-1  | 1792322058: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792322132: mosquitto version 2.1.2 terminating
+broker-1  | 1792322132: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792322147: Info: running mosquitto as user: mosquitto.
+broker-1  | 1792322147: Restored 2 base messages
+broker-1  | 1792322147: Restored 2 retained messages
+broker-1  | 1792322147: Restored 4 clients
+broker-1  | 1792322147: Restored 4 subscriptions
+broker-1  | 1792322147: Restored 0 client messages
+broker-1  | 1792322147: mosquitto version 2.1.2 starting
+broker-1  | 1792322147: Config loaded from /mosquitto/config/mosquitto.conf.
+broker-1  | 1792322147: Bridge support available.
+broker-1  | 1792322147: Persistence support available.
+broker-1  | 1792322147: TLS support available.
+broker-1  | 1792322147: TLS-PSK support available.
+broker-1  | 1792322147: Websockets support available.
+broker-1  | 1792322147: Opening ipv4 listen socket on port 1883.
+broker-1  | 1792322147: Opening ipv6 listen socket on port 1883.
+broker-1  | 1792322147: mosquitto version 2.1.2 running
+broker-1  | 1792322151: New connection from 172.18.0.4:49241 on port 1883.
+broker-1  | 1792322152: Client collector [(null):0] disconnected: session taken over.
+broker-1  | 1792322152: New client connected from 172.18.0.4:49241 as collector (p4, c0, k60).
+broker-1  | 1792322152: New connection from 172.18.0.3:54547 on port 1883.
+broker-1  | 1792322152: New connection from 172.18.0.5:58339 on port 1883.
+broker-1  | 1792322152: Client node_ref_amd64 [(null):0] disconnected: session taken over.
+broker-1  | 1792322152: New client connected from 172.18.0.3:54547 as node_ref_amd64 (p4, c0, k60).
+broker-1  | 1792322152: Client replayer [(null):0] disconnected: session taken over.
+broker-1  | 1792322152: New client connected from 172.18.0.5:58339 as replayer (p4, c0, k60).
+broker-1  | 1792322153: New connection from 172.18.0.1:46406 on port 1883.
+broker-1  | 1792322153: Client pi4_real_vpn [(null):0] disconnected: session taken over.
+broker-1  | 1792322153: New client connected from 172.18.0.1:46406 as pi4_real_vpn (p4, c0, k60).
+broker-1  | 1792323944: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792325743: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792327540: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792329336: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792331130: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792332929: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792334727: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792336525: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792336623: mosquitto version 2.1.2 terminating
+broker-1  | 1792336623: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792336632: Info: running mosquitto as user: mosquitto.
+broker-1  | 1792336632: Restored 3 base messages
+broker-1  | 1792336632: Restored 2 retained messages
+broker-1  | 1792336632: Restored 4 clients
+broker-1  | 1792336632: Restored 4 subscriptions
+broker-1  | 1792336632: Restored 1 client messages
+broker-1  | 1792336632: mosquitto version 2.1.2 starting
+broker-1  | 1792336632: Config loaded from /mosquitto/config/mosquitto.conf.
+broker-1  | 1792336632: Bridge support available.
+broker-1  | 1792336632: Persistence support available.
+broker-1  | 1792336632: TLS support available.
+broker-1  | 1792336632: TLS-PSK support available.
+broker-1  | 1792336632: Websockets support available.
+broker-1  | 1792336632: Opening ipv4 listen socket on port 1883.
+broker-1  | 1792336632: Opening ipv6 listen socket on port 1883.
+broker-1  | 1792336632: mosquitto version 2.1.2 running
+broker-1  | 1792336634: New connection from 172.18.0.3:44671 on port 1883.
+broker-1  | 1792336634: Client node_ref_amd64 [(null):0] disconnected: session taken over.
+broker-1  | 1792336634: New client connected from 172.18.0.3:44671 as node_ref_amd64 (p4, c0, k60).
+broker-1  | 1792336634: New connection from 172.18.0.5:42313 on port 1883.
+broker-1  | 1792336634: New connection from 172.18.0.4:57981 on port 1883.
+broker-1  | 1792336634: Client replayer [(null):0] disconnected: session taken over.
+broker-1  | 1792336634: New client connected from 172.18.0.5:42313 as replayer (p4, c0, k60).
+broker-1  | 1792336634: Client collector [(null):0] disconnected: session taken over.
+broker-1  | 1792336634: New client connected from 172.18.0.4:57981 as collector (p4, c0, k60).
+broker-1  | 1792336636: New connection from 172.18.0.1:56446 on port 1883.
+broker-1  | 1792336636: Client pi4_real_vpn [(null):0] disconnected: session taken over.
+broker-1  | 1792336636: New client connected from 172.18.0.1:56446 as pi4_real_vpn (p4, c0, k60).
+broker-1  | 1792338425: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792340224: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792342020: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792343815: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792345615: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792346023: Client pi4_real_vpn [172.18.0.1:56446] disconnected: connection closed by client.
+broker-1  | 1792347417: New connection from 172.18.0.1:56834 on port 1883.
+broker-1  | 1792347417: Client pi4_real_vpn [172.18.0.1:56446] disconnected: session taken over.
+broker-1  | 1792347417: New client connected from 172.18.0.1:56834 as pi4_real_vpn (p4, c0, k60).
+broker-1  | 1792347467: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792349300: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792350911: mosquitto version 2.1.2 terminating
+broker-1  | 1792350911: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792350911: Info: running mosquitto as user: mosquitto.
+broker-1  | 1792350911: Restored 2 base messages
+broker-1  | 1792350911: Restored 2 retained messages
+broker-1  | 1792350911: Restored 4 clients
+broker-1  | 1792350911: Restored 4 subscriptions
+broker-1  | 1792350911: Restored 0 client messages
+broker-1  | 1792350911: mosquitto version 2.1.2 starting
+broker-1  | 1792350911: Config loaded from /mosquitto/config/mosquitto.conf.
+broker-1  | 1792350911: Bridge support available.
+broker-1  | 1792350911: Persistence support available.
+broker-1  | 1792350911: TLS support available.
+broker-1  | 1792350911: TLS-PSK support available.
+broker-1  | 1792350911: Websockets support available.
+broker-1  | 1792350911: Opening ipv4 listen socket on port 1883.
+broker-1  | 1792350911: Opening ipv6 listen socket on port 1883.
+broker-1  | 1792350911: mosquitto version 2.1.2 running
+broker-1  | 1792350912: New connection from 172.18.0.5:60119 on port 1883.
+broker-1  | 1792350912: New connection from 172.18.0.4:50279 on port 1883.
+broker-1  | 1792350912: Client replayer [(null):0] disconnected: session taken over.
+broker-1  | 1792350912: New client connected from 172.18.0.5:60119 as replayer (p4, c0, k60).
+broker-1  | 1792350912: Client collector [(null):0] disconnected: session taken over.
+broker-1  | 1792350912: New client connected from 172.18.0.4:50279 as collector (p4, c0, k60).
+broker-1  | 1792350912: New connection from 172.18.0.3:43525 on port 1883.
+broker-1  | 1792350912: Client node_ref_amd64 [(null):0] disconnected: session taken over.
+broker-1  | 1792350912: New client connected from 172.18.0.3:43525 as node_ref_amd64 (p4, c0, k60).
+broker-1  | 1792350913: New connection from 172.18.0.1:33534 on port 1883.
+broker-1  | 1792350913: Client pi4_real_vpn [(null):0] disconnected: session taken over.
+broker-1  | 1792350913: New client connected from 172.18.0.1:33534 as pi4_real_vpn (p4, c0, k60).
+broker-1  | 1792352712: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792354512: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792356312: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792358113: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792359914: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792361715: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792363516: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792365317: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792365441: mosquitto version 2.1.2 terminating
+broker-1  | 1792365441: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792365442: Info: running mosquitto as user: mosquitto.
+broker-1  | 1792365442: Restored 3 base messages
+broker-1  | 1792365442: Restored 2 retained messages
+broker-1  | 1792365442: Restored 4 clients
+broker-1  | 1792365442: Restored 4 subscriptions
+broker-1  | 1792365442: Restored 1 client messages
+broker-1  | 1792365442: mosquitto version 2.1.2 starting
+broker-1  | 1792365442: Config loaded from /mosquitto/config/mosquitto.conf.
+broker-1  | 1792365442: Bridge support available.
+broker-1  | 1792365442: Persistence support available.
+broker-1  | 1792365442: TLS support available.
+broker-1  | 1792365442: TLS-PSK support available.
+broker-1  | 1792365442: Websockets support available.
+broker-1  | 1792365442: Opening ipv4 listen socket on port 1883.
+broker-1  | 1792365442: Opening ipv6 listen socket on port 1883.
+broker-1  | 1792365442: mosquitto version 2.1.2 running
+broker-1  | 1792365442: New connection from 172.18.0.4:39981 on port 1883.
+broker-1  | 1792365442: New connection from 172.18.0.5:49497 on port 1883.
+broker-1  | 1792365442: New connection from 172.18.0.3:33065 on port 1883.
+broker-1  | 1792365442: Client collector [(null):0] disconnected: session taken over.
+broker-1  | 1792365442: New client connected from 172.18.0.4:39981 as collector (p4, c0, k60).
+broker-1  | 1792365442: Client node_ref_amd64 [(null):0] disconnected: session taken over.
+broker-1  | 1792365442: New client connected from 172.18.0.3:33065 as node_ref_amd64 (p4, c0, k60).
+broker-1  | 1792365442: Client replayer [(null):0] disconnected: session taken over.
+broker-1  | 1792365442: New client connected from 172.18.0.5:49497 as replayer (p4, c0, k60).
+broker-1  | 1792365443: New connection from 172.18.0.1:41006 on port 1883.
+broker-1  | 1792365443: Client pi4_real_vpn [(null):0] disconnected: session taken over.
+broker-1  | 1792365443: New client connected from 172.18.0.1:41006 as pi4_real_vpn (p4, c0, k60).
+broker-1  | 1792367243: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792369043: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792370844: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792372645: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792374446: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792376247: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792378048: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792379694: mosquitto version 2.1.2 terminating
+broker-1  | 1792379694: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792379694: Info: running mosquitto as user: mosquitto.
+broker-1  | 1792379694: Restored 2 base messages
+broker-1  | 1792379694: Restored 2 retained messages
+broker-1  | 1792379694: Restored 4 clients
+broker-1  | 1792379694: Restored 4 subscriptions
+broker-1  | 1792379694: Restored 0 client messages
+broker-1  | 1792379694: mosquitto version 2.1.2 starting
+broker-1  | 1792379694: Config loaded from /mosquitto/config/mosquitto.conf.
+broker-1  | 1792379694: Bridge support available.
+broker-1  | 1792379694: Persistence support available.
+broker-1  | 1792379694: TLS support available.
+broker-1  | 1792379694: TLS-PSK support available.
+broker-1  | 1792379694: Websockets support available.
+broker-1  | 1792379694: Opening ipv4 listen socket on port 1883.
+broker-1  | 1792379694: Opening ipv6 listen socket on port 1883.
+broker-1  | 1792379694: mosquitto version 2.1.2 running
+broker-1  | 1792379695: New connection from 172.18.0.5:47311 on port 1883.
+broker-1  | 1792379695: New connection from 172.18.0.4:51377 on port 1883.
+broker-1  | 1792379695: New connection from 172.18.0.3:52971 on port 1883.
+broker-1  | 1792379695: Client replayer [(null):0] disconnected: session taken over.
+broker-1  | 1792379695: New client connected from 172.18.0.5:47311 as replayer (p4, c0, k60).
+broker-1  | 1792379695: Client collector [(null):0] disconnected: session taken over.
+broker-1  | 1792379695: New client connected from 172.18.0.4:51377 as collector (p4, c0, k60).
+broker-1  | 1792379695: Client node_ref_amd64 [(null):0] disconnected: session taken over.
+broker-1  | 1792379695: New client connected from 172.18.0.3:52971 as node_ref_amd64 (p4, c0, k60).
+broker-1  | 1792379695: New connection from 172.18.0.1:46606 on port 1883.
+broker-1  | 1792379695: Client pi4_real_vpn [(null):0] disconnected: session taken over.
+broker-1  | 1792379695: New client connected from 172.18.0.1:46606 as pi4_real_vpn (p4, c0, k60).
+broker-1  | 1792381495: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792383296: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792385097: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792386180: Client pi4_real_vpn [172.18.0.1:46606] disconnected: connection closed by client.
+broker-1  | 1792386263: New connection from 172.18.0.1:50070 on port 1883.
+broker-1  | 1792386263: Client pi4_real_vpn [172.18.0.1:46606] disconnected: session taken over.
+broker-1  | 1792386263: New client connected from 172.18.0.1:50070 as pi4_real_vpn (p4, c0, k60).
+broker-1  | 1792386898: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792388699: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792390499: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792392300: Saving in-memory database to /mosquitto/data//mosquitto.db.
+broker-1  | 1792393757: Client replayer [172.18.0.5:47311] disconnected: connection closed by client.

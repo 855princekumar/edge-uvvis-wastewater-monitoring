@@ -1,0 +1,14 @@
+{
+ "node_ref_amd64": {
+  "node": "node_ref_amd64",
+  "arch": "x86_64",
+  "py": "3.11.2",
+  "numpy": "1.24.2"
+ },
+ "pi4_real_vpn": {
+  "node": "pi4_real_vpn",
+  "arch": "aarch64",
+  "py": "3.11.2",
+  "numpy": "1.24.2"
+ }
+}

@@ -1,5 +1,23 @@
 # Changelog
 
+## v1.3.0 (2026-10-19)
+
+### Fixed
+- MQTT reconnection fault found in the v1.1.0 broker-restart test (47% loss): node, collector and replayer now
+  re-subscribe in `on_connect`, use persistent sessions (`clean_session=False`) and queued QoS 1 messages, and the
+  broker uses persistence. Verified: the same restart test lost 0 of 600 messages on all 7 nodes
+  (`fleet/runs/x_broker_restart_fixed_600s/`).
+
+### Added
+- 24 h soak test on a physical Raspberry Pi 4 over a VPN (+ native control node): 23.9 h at 1 Hz, 85,981 spectra
+  per node, 5 broker restarts, 16 unplanned interruptions > 10 s (longest 34 min); 0 messages lost
+  (`fleet/run_soak.sh`, `fleet/soak_schedule.sh`, `fleet/soak_checkpoint.py`, `fleet/soak_outages.py`,
+  `fleet/runs/soak_24h_1hz/`). The run was planned for 72 h and shortened to 24 h for the submission date.
+- `validation/stats_repeated_cv.py`: 10 x 5 repeated CV with the Nadeau-Bengio corrected t-test; blocked CV with 10 CNN
+  seeds and moving-block bootstrap intervals. `validation/cnn_tuning_learning_curve.py`: nested-tuned CNN and learning
+  curves. `validation/drift_cleaning_real.py`: fouling-detection test on the real record using the 39 logged cleaning
+  events (negative result). Outputs in `results/validation_v130/`.
+
 ## v1.2.0 (2026-10-17)
 
 ### Fixed
