@@ -41,7 +41,7 @@ bx.legend(fontsize=7, frameon=False, loc="upper center", ncol=2, handlelength=1,
 arrow(13.5, 14.3)
 panel(14.4, 5.6, "Raspberry Pi 4", [(6.4, "4.2 ms per\nspectrum (PLS)", C["ink"]), (3.0, "24 h with outages:\n0 messages lost", C["ink"])], C["green"], "#e9f8f1")
 arrow(20.1, 20.8)
-panel(20.9, 4.9, "Next: Raman", [(6.4, "Helps nitrite,\nnot nitrate", C["ink"]), (3.0, "Simulated\ntarget:\nSNR ≥ 100", C["ink"])], C["orange"], "#fdf0ea", ls="--")
+panel(20.9, 4.9, "Next: Raman", [(6.2, "Simulation:\nhelps nitrite,\nnot nitrate", C["ink"]), (2.9, "Target:\nSNR ≥ 100", C["ink"])], C["orange"], "#fdf0ea", ls="--")
 for e in ("png", "tiff"): fig.savefig(OUT / f"graphical_abstract.{e}", dpi=600)
 fig.savefig(OUT / "graphical_abstract.pdf")
 print("graphical abstract written", OUT, "size cm", round(W * 2.54, 1), "x", round(H * 2.54, 1))
