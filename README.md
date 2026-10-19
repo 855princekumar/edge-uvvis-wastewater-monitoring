@@ -1,43 +1,17 @@
-# Edge-Enabled UV-Vis-Raman Wastewater Monitoring: code and results
+# Edge-enabled UV-Vis wastewater monitoring: code, data processing and results
 
 [![Code license: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
-[![Data: CC-BY 4.0](https://img.shields.io/badge/data-CC--BY%204.0-lightgrey.svg)](CREDITS.md)
+[![Data: CC0 1.0](https://img.shields.io/badge/data-CC0%201.0-lightgrey.svg)](CREDITS.md)
 [![Dataset DOI](https://img.shields.io/badge/dataset%20DOI-10.25678%2F000D3C-orange.svg)](https://doi.org/10.25678/000D3C)
 
-Supplementary code and results for the manuscript **"Edge-Enabled UV-Vis-Raman Spectroscopy
-for Real-Time Wastewater Monitoring."** This repository lets a reader reproduce the
-secondary-data validation end-to-end. It contains **only** the analysis code and the results
-we computed; the raw dataset is obtained from its original open source and is not
-redistributed here.
+Supplementary code and results for the manuscript **"Edge-Enabled UV-Vis Spectroscopy for Real-Time Wastewater
+Monitoring: Secondary-Data Validation and a Roadmap toward UV-Vis-Raman Fusion"** (revised version). The
+repository reproduces the secondary-data validation, the edge benchmarks and the in-silico design study. It
+contains only code and the results we computed; the raw dataset is obtained from its original open source.
 
-## Abstract
+## Abstract (revised manuscript)
 
-Sewage treatment plants (STPs) are critical urban infrastructure, but their monitoring still
-leans on laboratory workflows that sit awkwardly against real-time operational needs.
-Laboratory methods such as UV-Visible spectrophotometry, HPLC, and Raman spectroscopy give
-high chemical specificity and traceability, yet they depend on manual sampling, central
-facilities, trained staff, and turnaround times of several days. Deployed Internet-of-Things
-(IoT) sensor platforms solve the speed problem for bulk parameters (pH, dissolved oxygen,
-turbidity) but cannot resolve molecular composition or reliably detect emerging contaminants.
-
-This study brings together recent work on online spectroscopy, edge computing, and digital
-compliance, and sets out a conceptual framework for edge-enabled UV-Vis-Raman monitoring at
-STPs. Published laboratory studies and field deployments report that full-spectrum UV-Vis,
-combined with chemometric or edge-based machine-learning models, can reach near-laboratory
-accuracy (R2 above 0.9) for surrogate parameters in realistic monitoring. As a
-proof-of-concept, we validated the machine-learning core of the framework on an open 25-week
-wastewater dataset: UV-Vis spectra predicted ammonium at R2 ~ 0.85 (five-fold
-cross-validation) on this limited external dataset, and a lightweight partial-least-squares
-(PLS) model matched or exceeded an off-the-shelf 1D-CNN across all determinands tested, a
-result directly relevant to low-cost edge deployment. The framework does not aim at
-autonomous control. It keeps a human in the loop and treats the system as decision support,
-predictive maintenance, and compliance-grade record-keeping aligned with ISO 15839 and
-Central Pollution Control Board (CPCB) requirements. On the evidence reviewed, such systems
-are feasible on embedded hardware (Raspberry Pi and Jetson class), scalable in cost, and
-compatible with SCADA and telemetry already in use.
-
-**Keywords:** sewage treatment plant (STP); real-time wastewater monitoring; UV-Vis-Raman;
-edge computing; machine learning; chemometrics; CPCB compliance.
+Sewage treatment plants (STPs) still rely largely on laboratory analysis, although online UV-Vis analysers are already part of India's continuous-monitoring framework for STP effluent. We propose an edge-enabled UV-Vis-Raman monitoring framework and test its UV-Vis prediction core on an open 25-week dataset of raw municipal wastewater (510 spectra matched to laboratory grab samples). Partial least-squares (PLS) regression predicted ammonium with R² = 0.86 under random and 0.82 under time-blocked cross-validation, and phosphate with 0.66 and 0.56; dissolved organic carbon was not recoverable. PLS matched or exceeded a compact one-dimensional convolutional neural network (CNN) for ammonium and phosphate at about 1,500 times lower compute. On a Raspberry Pi 4, inference took 0.19 ms (PLS) and 2.8 ms (CNN) per spectrum, and a 24 h test over a VPN with injected and unplanned outages lost no messages. A physics-informed simulation, not a validation, indicated that Raman would add little for nitrate but could greatly reduce nitrite error; sensitivity analysis and a test on the real spectra place the required Raman signal-to-noise ratio at about 100. The results are a reproducible baseline, not evidence of an integrated device; staged acceptance criteria are defined for the hardware and pilot stages.
 
 ## What the code does
 
@@ -51,7 +25,7 @@ per run.
 > Lechevallier, P., Gruber, G., Bares, V., Neuenhofer, N., Waldner, L., Mahajan, A.,
 > Mutzner, L., & Rieckermann, J. (2024). *Dataset on wastewater quality monitoring with
 > adsorption and reflectance spectroscopy in the UV/Vis range* (v1.0). Eawag.
-> https://doi.org/10.25678/000D3C - License: **CC-BY 4.0**.
+> https://doi.org/10.25678/000D3C - Dataset license: **CC0 1.0** (the describing article in *Scientific Data* is CC BY 4.0).
 
 Download only the **`2_data.zip`** resource from the DOI and place it beside
 `run_experiment.py`. Details: [`data/README.md`](data/README.md). Full attribution:
@@ -165,12 +139,13 @@ cd fleet
 ./run_bench_matrix_win.sh          # or run_bench_matrix.sh on Linux/macOS -> out/bench_*.json
 COMPOSE_BUILD=--build ./run_fleet.sh 1 1800 my_run   # first run builds images; 7 nodes, MQTT,
                                                       # real spectra at 1 Hz for 30 min -> runs/my_run/
-python plot_fleet.py runs/my_run figs
+python plot_fleet.py runs/my_run figs   # Figs. S8 (inference by profile) and S9 (latency CDF)
 ```
 
 | Measurement | PLS (12 LV) | 1D-CNN (NumPy) | Source |
 |---|---|---|---|
-| **Physical Raspberry Pi 4, 4 GB**, median / p95 (ms) | 0.189 / 0.214 | 2.84 / 2.94 | `fleet/real_pi/bench_pi4_real_1thread_215ch.json` |
+| **Physical Raspberry Pi 4, 4 GB**, model step only, median / p95 (ms) | 0.189 / 0.214 | 2.84 / 2.94 | `fleet/real_pi/bench_pi4_real_1thread_215ch.json` |
+| **Physical Raspberry Pi 4**, complete on-node pipeline (SG + SNV + scaling + model), median (ms) | 4.22 | 8.66 | `fleet/runs/fleet_with_real_pi_1hz_600s/` |
 | Emulated arm64 4 GB profile, median (ms) | 1.63 | 86.5 | `fleet/out_bench_215/` |
 | Native x86-64 container, median (ms) | 0.08 | 0.67 | `fleet/out_bench_215/` |
 
@@ -181,7 +156,7 @@ All seven emulated profiles, down to 256 MB and half a core, completed without O
 is not available on 32-bit ARM; the NumPy CNN covers it.
 
 Fleet test (real spectra, MQTT QoS 1, 1 Hz per node = 120x the real 2-min rate):
-- run A, 7 emulated nodes, 30 min: 0% loss on every node; median end-to-end latency 6.7 to
+- run A, 7 nodes (6 emulated + 1 native), 30 min: 0% loss on every node; median end-to-end latency 6.7 to
   448 ms; node predictions equal host predictions to within 6e-13 mg/L on x86-64, arm64 and
   armv7 (`fleet/runs/fleet_1hz_1800s/`);
 - run B, the same plus the physical Pi 4 over a VPN, 10 min: 0% loss; Pi median end-to-end
@@ -203,17 +178,40 @@ Fleet test (real spectra, MQTT QoS 1, 1 Hz per node = 120x the real 2-min rate):
 After the v1.3.0 client fix the restart test lost no messages (`fleet/runs/x_broker_restart_fixed_600s/`).
 
 **24 h soak on real hardware (v1.3.0):** physical Raspberry Pi 4 over a VPN, 1 Hz, 85,981 spectra, five broker
-restarts and 16 unplanned interruptions > 10 s (longest 34 min): **0 messages lost**; Pi median end-to-end latency
+restarts, 15 unplanned interruptions > 10 s of the VPN path (68 min, longest 34 min) and one 11 s host pause
+(classified by `fleet/soak_outages.py` from the replayer's own send times, v1.3.1): **0 messages lost**; Pi median end-to-end latency
 299 ms outside interruptions, about 1% of its four cores (`fleet/runs/soak_24h_1hz/`).
 Stage 2 asks for 72 h, so it is partially evaluated.
 
 ### Statistical and real-data checks (v1.3.0)
 
 - PLS vs CNN, 10 x 5 repeated CV, corrected t-test: ammonium +0.18 R² (p = 0.001), phosphate +0.18 (p < 0.001);
-  under time-blocked CV PLS is better in all five periods (block-bootstrap CI excludes 0). A tuned CNN still trails PLS.
+  under time-blocked CV PLS is better in all five periods for NH4 and PO4 (block-bootstrap CI excludes 0). A tuned CNN still trails PLS.
 - Learning curves: PLS plateaus at ~250 training spectra; the CNN is still improving at 408.
 - Fouling detection on the real record (39 logged cleanings, every ~4 days): no detectable drift (negative result).
-- Reproduce: `python validation/stats_repeated_cv.py data/raw/extracted results/validation_v130`, and likewise for the other two scripts.
+- Reproduce: `python validation/stats_repeated_cv.py data/raw/extracted results/validation_v130` and
+  `python validation/cnn_tuning_learning_curve.py data/raw/extracted results/validation_v130`;
+  `python validation/drift_cleaning_real.py data/raw/extracted/2_data results/validation_v130` (note the `2_data` path).
+  `simulation/analyse.py` must be run from `simulation/` after `sim_fusion.py`.
+
+### Baselines, stricter splits and VIP (v1.3.1)
+
+`validation/baselines_forward.py` -> `results/validation_v131/baselines_forward.json`. Time-blocked R², smoothed + SNV:
+
+| Determinand | Mean | Turbidity | A254 | Best single wavelength | PLS | PLS forward chaining (gap 0 / 1 / 2 d) | PLS LOPO, purge 1 / 2 d |
+|---|---|---|---|---|---|---|---|
+| NH4 | -0.06 | -0.02 | 0.20 | 0.28 (235 nm) | 0.82 | 0.75 / 0.75 / 0.78 | 0.82 / 0.81 |
+| PO4 | -0.06 | -0.03 | 0.14 | 0.19 | 0.56 | 0.42 / 0.55 / 0.52 | 0.61 / 0.55 |
+| DOC | -0.21 | -0.15 | -0.08 | -0.03 | -0.52 | 0.01 / -0.04 / -0.88 | -0.59 / -0.66 |
+
+NH4 and PO4 have no direct UV-Vis absorbance: PLS predicts them as surrogates (VIP highest at ~215-220 and
+~290-295 nm). Reproduce: `python validation/baselines_forward.py data/raw/extracted results/validation_v131`.
+
+### Figures
+
+Every figure in the paper is drawn by a script in this repository: `figures/make_figures.py` (Figs. 1, 2 and S7),
+`fleet/plot_fleet.py` (Figs. S8, S9), `simulation/analyse.py` (Fig. 4), `simulation/plot_drift.py` (Fig. S10),
+`simulation/robust_plot.py` (Fig. S11); Figs. 3 and S1-S6 come from `run_experiment.py`.
 
 ### In-silico UV-Vis + Raman design study (SIMULATION, not a validation)
 
@@ -231,7 +229,7 @@ UV-Vis alone gave nitrate R² 0.967 and nitrite R² 0.59, and Raman fusion reduc
 
 ## How to cite
 
-Software archive: v1.3.0 https://doi.org/10.5281/zenodo.23467524 (v1.2.0: https://doi.org/10.5281/zenodo.23438582; v1.1.0: https://doi.org/10.5281/zenodo.23434324; all versions:
+Software archive: v1.3.1 (DOI below once minted); v1.3.0 https://doi.org/10.5281/zenodo.23467524 (v1.2.0: https://doi.org/10.5281/zenodo.23438582; v1.1.0: https://doi.org/10.5281/zenodo.23434324; all versions:
 https://doi.org/10.5281/zenodo.21904541).
 
 Please cite **both** the primary dataset (DOI 10.25678/000D3C) and this repository; see
@@ -239,6 +237,6 @@ Please cite **both** the primary dataset (DOI 10.25678/000D3C) and this reposito
 
 ## License
 
-Code: **MIT** ([LICENSE](LICENSE)). Data: **CC-BY 4.0**, (c) Lechevallier et al. (2024),
+Code: **MIT** ([LICENSE](LICENSE)). Data: **CC0 1.0**, Lechevallier et al. (2024),
 obtained from the source above and not redistributed here. The MIT license covers this
 repository's code only.

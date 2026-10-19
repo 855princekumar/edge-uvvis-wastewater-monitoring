@@ -12,12 +12,12 @@ openly published dataset. It is the **primary source**; this repository is only 
 > Federal Institute of Aquatic Science and Technology. https://doi.org/10.25678/000D3C
 
 - **Publisher / repository:** Eawag ERIC / opendata.eawag.ch
-- **License:** Creative Commons Attribution (CC-BY 4.0) - https://creativecommons.org/licenses/by/4.0/
+- **License (dataset):** Creative Commons Zero (CC0 1.0) - https://creativecommons.org/publicdomain/zero/1.0/ (DataCite record of 10.25678/000D3C). The data descriptor article (Lechevallier et al., 2025, *Scientific Data*) is CC BY 4.0.
 - **Dataset contact:** Joerg Rieckermann, Eawag
 
-### CC-BY attribution notice
+### Attribution notice (good scholarly practice; CC0 does not require it)
 This work includes / is derived from material by Lechevallier et al. (2024), Eawag,
-licensed under CC-BY 4.0. Changes were made: the tabular UV-Vis absorbance spectra were
+released under CC0 1.0. Changes were made: the tabular UV-Vis absorbance spectra were
 time-joined to laboratory grab-sample values and used to train and cross-validate
 regression models. No endorsement by the original authors or Eawag is implied.
 
@@ -31,7 +31,7 @@ The dataset accompanies:
 ## This repository
 - Secondary analysis, code, figures, and results (c) 2025 Prince Kumar and Harshpreet Kaur.
 - Code is released under the MIT License (see LICENSE). The MIT license applies to the code
-  only and does **not** relicense the CC-BY dataset.
+  only and does **not** relicense the dataset.
 
 ## Acknowledgement of tools
 Analysis pipeline built in Python (NumPy, pandas, scikit-learn, SciPy, PyTorch, Matplotlib);

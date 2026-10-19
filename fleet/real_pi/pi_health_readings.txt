@@ -1,0 +1,6 @@
+Physical Raspberry Pi 4 Model B (4 GB): health readings taken over SSH (vcgencmd) during the benchmark and fleet sessions,
+16-19 Oct 2026, with the board's normal background services running.
+SoC temperature readings (vcgencmd measure_temp): 54.0, 55.5, 56.9, 59.9, 61.8, 62.8, 68.6 degC (range 54.0-68.6 degC)
+Throttling (vcgencmd get_throttled): throttled=0x0 at every reading (no under-voltage, frequency capping or thermal throttling)
+Load average readings (uptime) between runs: 0.08, 0.04, 0.04 / 0.28, 0.13, 0.04 / 0.08, 0.06, 0.04
+CPU and memory during the soak test: fleet/runs/soak_24h_1hz/pi_vmstat.txt (60 s interval)

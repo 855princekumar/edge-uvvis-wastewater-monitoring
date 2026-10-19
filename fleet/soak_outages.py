@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Outage analysis of a soak run: for each node, every interval longer than GAP_S without a result
-(start time, duration, overlapping broker restart if any), messages delivered late after each gap,
+(start time, duration, cause), messages delivered late after each gap,
 latency outside outage windows, and the physical Pi's CPU use from its vmstat log.
 Usage: python soak_outages.py runs/<soak_run> [gap_s]"""
 import gzip, json, os, re, sys
@@ -11,6 +11,7 @@ R["e2e_s"] = R.t_coll - R.t_send
 ev = [l.split() for l in open(os.path.join(run, "events.txt"))]
 t0 = float(ev[0][0]); restarts = [t0 + float(e[0]) for e in ev if len(e) > 1 and e[1] == "broker_restart_begin"]
 sent = json.load(open(os.path.join(run, "replayer.json")))["sent_per_node"]
+ts = R.drop_duplicates("seq").sort_values("seq").t_send.to_numpy(); send_gaps = np.diff(ts)   # replayer publication times
 out = {"sent_per_node": sent, "duration_h": float((R.t_send.max() - R.t_send.min()) / 3600), "broker_restarts": len(restarts), "nodes": {}}
 for n, g in R.groupby("node"):
     g = g.sort_values("t_coll"); tc = g.t_coll.to_numpy(); gaps = np.diff(tc); idx = np.where(gaps > GAP_S)[0]
@@ -19,8 +20,11 @@ for n, g in R.groupby("node"):
         a, b = tc[i], tc[i + 1]
         near = [r for r in restarts if a - 60 <= r <= b + 5]
         late = g[(g.t_coll >= b) & (g.t_coll <= b + 120)]
-        outs.append({"start_utc": pd.to_datetime(a, unit="s").strftime("%Y-%m-%d %H:%M:%S"), "duration_s": float(b - a),
-                     "cause": "broker restart (scheduled)" if near else "network/VPN (unplanned)",
+        # host pause only if the replayer itself stopped publishing for >= 80% of the gap (it shares the host)
+        w = (ts[1:] >= a - 5) & (ts[:-1] <= b + 5); host_gap = float(send_gaps[w].max()) if w.any() else 0.0
+        cause = "broker restart (scheduled)" if near else ("host pause (replayer stopped)" if host_gap >= 0.8 * (b - a) else "node path / network (unplanned)")
+        outs.append({"start_utc": pd.to_datetime(a, unit="s").strftime("%Y-%m-%d %H:%M:%S"), "duration_s": float(b - a), "replayer_gap_s": host_gap,
+                     "cause": cause,
                      "max_e2e_after_s": float(late.e2e_s.max()) if len(late) else None})
         mask |= (g.t_send.to_numpy() >= a - 5) & (g.t_send.to_numpy() <= b + 5)
     ok = g[~mask] if mask.any() else g
@@ -36,4 +40,10 @@ if os.path.exists(vm):
     busy = np.array([int(r[12]) + int(r[13]) for r in rows]); free_mb = np.array([int(r[3]) for r in rows]) / 1024
     out["pi_vmstat"] = {"samples_60s": len(rows), "busy_pct_all_cores_median": float(np.median(busy)), "busy_pct_all_cores_p95": float(np.percentile(busy, 95)),
                         "busy_pct_all_cores_max": int(busy.max()), "one_core_equiv_median_pct": 4 * float(np.median(busy)), "free_mem_mb_min": float(free_mb.min())}
+cls = {}
+for n, v in out["nodes"].items():
+    k = [x for x in v if x.startswith("outages")][0]
+    for c, key in (("broker restart (scheduled)", "restart"), ("host pause (replayer stopped)", "host_pause"), ("node path / network (unplanned)", "node_path")):
+        cls[f"{n}|{key}"] = [o["duration_s"] for o in v[k] if o["cause"] == c]
+json.dump(cls, open(os.path.join(run, "soak_outage_classes.json"), "w"), indent=1)
 json.dump(out, open(os.path.join(run, "soak_outages.json"), "w"), indent=1); print(json.dumps(out, indent=1))

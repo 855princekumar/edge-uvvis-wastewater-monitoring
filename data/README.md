@@ -1,6 +1,6 @@
 # data/
 
-The raw dataset is **not** committed to this repository (it is CC-BY licensed and large).
+The raw dataset is **not** committed to this repository (it is large and is distributed by Eawag, CC0 1.0).
 Obtain it directly from the primary source.
 
 ## Get the data (one file)
@@ -14,5 +14,5 @@ not used here). `1_codes.zip` is optional (the dataset authors' own processing c
 reference only).
 
 ## License
-The dataset is (c) Lechevallier et al. (2024), Eawag, released under **CC-BY 4.0**.
+The dataset is (c) Lechevallier et al. (2024), Eawag, released under **CC0 1.0** (data descriptor article: CC BY 4.0).
 See ../CREDITS.md for the required attribution. Do not redistribute without attribution.

@@ -1,5 +1,22 @@
 # Changelog
 
+## v1.3.1 (2026-10-19)
+
+### Fixed
+- Soak outage classification (`fleet/soak_outages.py`): a gap is a host pause only if the replayer itself stopped
+  publishing for at least 80% of it. Corrected split for the physical Pi: 15 VPN-path outages (68.4 min, longest
+  34 min), 1 host pause (11 s), 2 broker-restart gaps (v1.3.0 reported 13 VPN + 3 host pauses). Loss unchanged (0%).
+- Dataset licence stated as CC0 1.0 (DataCite record of 10.25678/000D3C); the data descriptor article is CC BY 4.0.
+- `fleet/edge_node.py`: NumPy 2 compatible scalar conversion (`.item()`); stale 216-channel docstrings; README
+  reproduction command for `drift_cleaning_real.py`.
+
+### Added
+- `validation/baselines_forward.py`: trivial baselines (mean, turbidity, A254, best single wavelength), forward-chaining
+  and purged leave-one-period-out validation, VIP scores (`results/validation_v131/`).
+- `figures/make_figures.py` (Figs. 1, 2 as diagrams; Fig. S7 VIP), `simulation/plot_drift.py` (Fig. S10 with the
+  alarm threshold drawn); `fleet/plot_fleet.py` now uses the 215-channel benchmark files and shows every curve.
+- `fleet/real_pi/pi_health_readings.txt`: SoC temperature and throttling readings of the physical Pi.
+
 ## v1.3.0 (2026-10-19)
 
 ### Fixed

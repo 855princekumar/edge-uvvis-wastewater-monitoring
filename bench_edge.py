@@ -5,7 +5,7 @@ bench_edge.py - inference cost of the ACTUAL models used in the manuscript
 run_experiment.py) on the device it runs on (Raspberry Pi 4/5, Jetson, laptop).
 
 Latency, memory and model size do not depend on the spectral values, so the
-models are fitted on random data of the real input shape (216 channels).
+models are fitted on random data of the real input shape (215 channels).
 Accuracy is NOT measured here; it comes from run_experiment.py.
 
 Usage:  python3 bench_edge.py --repeats 2000 --out bench_<device>.json

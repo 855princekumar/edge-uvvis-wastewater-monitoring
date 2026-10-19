@@ -25,7 +25,7 @@ def predict(a):
     x = np.asarray(a, dtype=np.float64)[None]
     if M.get("smooth"): x = savgol_filter(x, 11, 2, axis=1)
     if M.get("snv"): x = (x - x.mean(1, keepdims=True)) / (x.std(1, keepdims=True) + 1e-8)
-    return float(((x - mean) / scale) @ coef + icpt)
+    return (((x - mean) / scale) @ coef + icpt).item()   # .item(): NumPy 2 compatible
 
 def on_msg(cl, _, msg):
     t_recv = time.time(); d = json.loads(msg.payload)

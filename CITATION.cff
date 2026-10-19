@@ -11,14 +11,14 @@ authors:
     orcid: "https://orcid.org/0009-0001-7546-2926"
 repository-code: "https://github.com/855princekumar/edge-uvvis-wastewater-monitoring"
 url: "https://github.com/855princekumar/edge-uvvis-wastewater-monitoring"
-version: v1.3.0
-doi: 10.5281/zenodo.23467524
+version: v1.3.1
+doi: 10.5281/zenodo.21904541
 date-released: 2026-10-19
 license: MIT
 identifiers:
   - type: doi
     value: 10.5281/zenodo.23467524
-    description: "Version v1.3.0 (this release)"
+    description: "Version v1.3.0 (previous release)"
   - type: doi
     value: 10.5281/zenodo.23438582
     description: "Version v1.2.0 (previous release)"
@@ -46,11 +46,11 @@ references:
       - family-names: Waldner
         given-names: Laura
       - family-names: Mahajan
-        given-names: Aju
+        given-names: Abhinit
       - family-names: Mutzner
         given-names: Lena
       - family-names: Rieckermann
         given-names: Joerg
     doi: 10.25678/000D3C
     year: 2024
-    notes: "Licensed CC-BY 4.0. Primary source of all data analysed."
+    notes: "Dataset licensed CC0 1.0 (data descriptor article CC BY 4.0). Primary source of all data analysed."

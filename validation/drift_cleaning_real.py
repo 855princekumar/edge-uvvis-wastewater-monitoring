@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Real-data test of fouling/cleaning signatures in the Eawag UV-Vis record (Fig. S9 was simulated).
 
-Uses the 40 'cleaning' events of 4_sensor_logbook/flume_logbook.csv and the 2-min absorbance at
+Uses the 39 'cleaning' events of 4_sensor_logbook/flume_logbook.csv and the 2-min absorbance at
 700 nm (valid rows of flume_scan_absorbance.csv). Analysis fixed in advance:
  (1) Step test: per event, median A700 in the 6 h before the cleaning start minus the 6 h after its end.
      Control: the same windows shifted 24 h earlier (same time of day, no cleaning). Wilcoxon tests.

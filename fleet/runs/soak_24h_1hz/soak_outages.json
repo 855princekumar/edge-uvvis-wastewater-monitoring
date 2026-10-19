@@ -12,169 +12,197 @@
     {
      "start_utc": "2026-10-18 10:40:56",
      "duration_s": 11.019691944122314,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 1.1360673904418945,
+     "cause": "node path / network (unplanned)",
      "max_e2e_after_s": 94.20200634002686
     },
     {
      "start_utc": "2026-10-18 10:42:33",
      "duration_s": 12.17211627960205,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 15.295671463012695,
+     "cause": "host pause (replayer stopped)",
      "max_e2e_after_s": 193.6454885005951
     },
     {
      "start_utc": "2026-10-18 10:42:46",
      "duration_s": 11.177504777908325,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 15.295671463012695,
+     "cause": "host pause (replayer stopped)",
      "max_e2e_after_s": 193.6454885005951
     },
     {
      "start_utc": "2026-10-18 10:42:57",
      "duration_s": 21.446907997131348,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 1.4329447746276855,
+     "cause": "node path / network (unplanned)",
      "max_e2e_after_s": 218.30252885818481
     },
     {
      "start_utc": "2026-10-18 10:43:19",
      "duration_s": 32.23502731323242,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 1.3812792301177979,
+     "cause": "node path / network (unplanned)",
      "max_e2e_after_s": 254.05502080917358
     },
     {
      "start_utc": "2026-10-18 10:43:57",
      "duration_s": 13.846132516860962,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 1.469038724899292,
+     "cause": "node path / network (unplanned)",
      "max_e2e_after_s": 270.20567750930786
     },
     {
      "start_utc": "2026-10-18 10:44:11",
      "duration_s": 12.00606393814087,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 1.469038724899292,
+     "cause": "node path / network (unplanned)",
      "max_e2e_after_s": 275.53481340408325
     },
     {
      "start_utc": "2026-10-18 10:44:23",
      "duration_s": 19.433643579483032,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 5.064510822296143,
+     "cause": "node path / network (unplanned)",
      "max_e2e_after_s": 286.7468008995056
     },
     {
      "start_utc": "2026-10-18 10:44:43",
      "duration_s": 25.655746459960938,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 5.064510822296143,
+     "cause": "node path / network (unplanned)",
      "max_e2e_after_s": 304.90809440612793
     },
     {
      "start_utc": "2026-10-18 10:45:08",
      "duration_s": 11.430277347564697,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 5.1815385818481445,
+     "cause": "node path / network (unplanned)",
      "max_e2e_after_s": 311.6555166244507
     },
     {
      "start_utc": "2026-10-18 10:45:20",
      "duration_s": 18.421398162841797,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 5.1815385818481445,
+     "cause": "node path / network (unplanned)",
      "max_e2e_after_s": 325.28366589546204
     },
     {
      "start_utc": "2026-10-18 10:47:22",
      "duration_s": 10.794841289520264,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 1.9663708209991455,
+     "cause": "node path / network (unplanned)",
      "max_e2e_after_s": 391.6514596939087
     },
     {
      "start_utc": "2026-10-18 10:47:55",
      "duration_s": 10.283709049224854,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 1.4940927028656006,
+     "cause": "node path / network (unplanned)",
      "max_e2e_after_s": 398.8977952003479
     },
     {
      "start_utc": "2026-10-18 10:48:35",
      "duration_s": 17.790778160095215,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 1.1579501628875732,
+     "cause": "node path / network (unplanned)",
      "max_e2e_after_s": 411.0169839859009
     },
     {
      "start_utc": "2026-10-18 10:49:04",
      "duration_s": 11.72958779335022,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 1.57633638381958,
+     "cause": "node path / network (unplanned)",
      "max_e2e_after_s": 422.57426834106445
     },
     {
      "start_utc": "2026-10-18 10:50:24",
      "duration_s": 20.512041330337524,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 1.1621475219726562,
+     "cause": "node path / network (unplanned)",
      "max_e2e_after_s": 500.2897229194641
     },
     {
      "start_utc": "2026-10-18 10:50:44",
      "duration_s": 12.557157039642334,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 1.000809669494629,
+     "cause": "node path / network (unplanned)",
      "max_e2e_after_s": 510.2442994117737
     },
     {
      "start_utc": "2026-10-18 10:50:59",
      "duration_s": 19.450011491775513,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 1.9478485584259033,
+     "cause": "node path / network (unplanned)",
      "max_e2e_after_s": 517.6351068019867
     },
     {
      "start_utc": "2026-10-18 10:51:18",
      "duration_s": 22.08010721206665,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 2.9306232929229736,
+     "cause": "node path / network (unplanned)",
      "max_e2e_after_s": 527.8577630519867
     },
     {
      "start_utc": "2026-10-18 10:51:40",
      "duration_s": 12.090089559555054,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 2.9306232929229736,
+     "cause": "node path / network (unplanned)",
      "max_e2e_after_s": 534.5481834411621
     },
     {
      "start_utc": "2026-10-18 10:52:38",
      "duration_s": 10.725584745407104,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 2.0962908267974854,
+     "cause": "node path / network (unplanned)",
      "max_e2e_after_s": 546.1004111766815
     },
     {
      "start_utc": "2026-10-18 10:58:23",
      "duration_s": 60.023791551589966,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 2.440216064453125,
+     "cause": "node path / network (unplanned)",
      "max_e2e_after_s": 96.46979427337646
     },
     {
      "start_utc": "2026-10-18 10:59:26",
      "duration_s": 24.46188497543335,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 5.961653232574463,
+     "cause": "node path / network (unplanned)",
      "max_e2e_after_s": 96.46979427337646
     },
     {
      "start_utc": "2026-10-18 11:00:03",
      "duration_s": 11.57710599899292,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 5.837809801101685,
+     "cause": "node path / network (unplanned)",
      "max_e2e_after_s": 96.46979427337646
     },
     {
      "start_utc": "2026-10-18 11:15:31",
      "duration_s": 20.462960720062256,
+     "replayer_gap_s": 1.0429320335388184,
      "cause": "broker restart (scheduled)",
      "max_e2e_after_s": 19.67294716835022
     },
     {
      "start_utc": "2026-10-18 15:17:02",
      "duration_s": 11.902511596679688,
+     "replayer_gap_s": 1.0363667011260986,
      "cause": "broker restart (scheduled)",
      "max_e2e_after_s": 10.97785234451294
     },
     {
      "start_utc": "2026-10-18 18:14:32",
      "duration_s": 51.3293399810791,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 51.330424547195435,
+     "cause": "host pause (replayer stopped)",
      "max_e2e_after_s": 0.13593506813049316
     },
     {
      "start_utc": "2026-10-18 18:29:41",
      "duration_s": 33.52531147003174,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 33.516201972961426,
+     "cause": "host pause (replayer stopped)",
      "max_e2e_after_s": 0.6378991603851318
     }
    ],
@@ -201,109 +229,127 @@
     {
      "start_utc": "2026-10-18 10:06:42",
      "duration_s": 2022.0875716209412,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 14.509958982467651,
+     "cause": "node path / network (unplanned)",
      "max_e2e_after_s": 2021.233211517334
     },
     {
      "start_utc": "2026-10-18 10:53:00",
      "duration_s": 344.87407875061035,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 11.845093488693237,
+     "cause": "node path / network (unplanned)",
      "max_e2e_after_s": 1112.9586532115936
     },
     {
      "start_utc": "2026-10-18 11:15:31",
      "duration_s": 21.75548005104065,
+     "replayer_gap_s": 1.0429320335388184,
      "cause": "broker restart (scheduled)",
      "max_e2e_after_s": 21.04949426651001
     },
     {
      "start_utc": "2026-10-18 11:24:35",
      "duration_s": 10.370294570922852,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 1.2746548652648926,
+     "cause": "node path / network (unplanned)",
      "max_e2e_after_s": 24.511924982070923
     },
     {
      "start_utc": "2026-10-18 12:33:20",
      "duration_s": 12.500076293945312,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 1.1487758159637451,
+     "cause": "node path / network (unplanned)",
      "max_e2e_after_s": 21.779344081878662
     },
     {
      "start_utc": "2026-10-18 12:33:33",
      "duration_s": 10.991893768310547,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 1.3008191585540771,
+     "cause": "node path / network (unplanned)",
      "max_e2e_after_s": 21.779344081878662
     },
     {
      "start_utc": "2026-10-18 13:10:39",
      "duration_s": 11.24934196472168,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 16.22568655014038,
+     "cause": "host pause (replayer stopped)",
      "max_e2e_after_s": 8.494098901748657
     },
     {
      "start_utc": "2026-10-18 14:22:00",
      "duration_s": 11.551162481307983,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 1.001673936843872,
+     "cause": "node path / network (unplanned)",
      "max_e2e_after_s": 10.9483003616333
     },
     {
      "start_utc": "2026-10-18 15:17:02",
      "duration_s": 13.939168930053711,
+     "replayer_gap_s": 1.0363667011260986,
      "cause": "broker restart (scheduled)",
      "max_e2e_after_s": 13.314365148544312
     },
     {
      "start_utc": "2026-10-18 16:29:02",
      "duration_s": 10.500235795974731,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 1.0811755657196045,
+     "cause": "node path / network (unplanned)",
      "max_e2e_after_s": 10.11222791671753
     },
     {
      "start_utc": "2026-10-18 17:53:18",
      "duration_s": 1419.1522483825684,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 51.330424547195435,
+     "cause": "node path / network (unplanned)",
      "max_e2e_after_s": 1418.2746543884277
     },
     {
      "start_utc": "2026-10-18 18:29:40",
      "duration_s": 65.93098402023315,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 33.516201972961426,
+     "cause": "node path / network (unplanned)",
      "max_e2e_after_s": 65.06071305274963
     },
     {
      "start_utc": "2026-10-18 21:48:51",
      "duration_s": 29.998257160186768,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 1.0079612731933594,
+     "cause": "node path / network (unplanned)",
      "max_e2e_after_s": 29.50166964530945
     },
     {
      "start_utc": "2026-10-19 02:01:14",
      "duration_s": 10.045660495758057,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 1.0011963844299316,
+     "cause": "node path / network (unplanned)",
      "max_e2e_after_s": 9.553395748138428
     },
     {
      "start_utc": "2026-10-19 05:02:26",
      "duration_s": 116.89390134811401,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 1.001507043838501,
+     "cause": "node path / network (unplanned)",
      "max_e2e_after_s": 116.05107736587524
     },
     {
      "start_utc": "2026-10-19 05:12:40",
      "duration_s": 13.871768236160278,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 1.0015678405761719,
+     "cause": "node path / network (unplanned)",
      "max_e2e_after_s": 27.4770929813385
     },
     {
      "start_utc": "2026-10-19 05:12:54",
      "duration_s": 15.358115434646606,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 1.0015678405761719,
+     "cause": "node path / network (unplanned)",
      "max_e2e_after_s": 27.4770929813385
     },
     {
      "start_utc": "2026-10-19 07:01:12",
      "duration_s": 11.275819301605225,
-     "cause": "network/VPN (unplanned)",
+     "replayer_gap_s": 1.0015020370483398,
+     "cause": "node path / network (unplanned)",
      "max_e2e_after_s": 10.758803129196167
     }
    ],
